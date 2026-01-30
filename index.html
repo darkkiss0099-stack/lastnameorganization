@@ -13,6 +13,7 @@
         }
 
         body {
+            /* พื้นหลังรูปภาพที่คุณส่งมา */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://img5.pic.in.th/file/secure-sv1/14401b8158e755eb4a.jpg');
             background-size: cover;
@@ -52,6 +53,7 @@
             to { transform: translate(5%, 5%); }
         }
 
+        /* --- หัวข้อ Typing Effect --- */
         .typewriter-container {
             height: 100px;
             display: flex;
@@ -94,6 +96,7 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
+        /* --- กรอบ Card กลางแบบแบนกว้างตามรูปตัวอย่าง --- */
         .main-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
@@ -112,7 +115,6 @@
             width: 320px; 
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
             opacity: 0.95;
-            transition: transform 0.3s ease;
         }
 
         .partners-label {
@@ -143,7 +145,7 @@
             align-items: center;
         }
 
-        /* --- ป้าย Partner ปรับให้เป็นปุ่มกดได้ --- */
+        /* --- ปรับแต่งป้าย Partner ให้กด Link ได้ --- */
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255,255,255,0.05);
@@ -152,25 +154,25 @@
             flex: 1;
             text-align: center;
             transition: all 0.4s ease;
-            cursor: pointer; /* เปลี่ยนเมาส์ให้เป็นรูปมือ */
-            user-select: none;
+            cursor: pointer;
+            text-decoration: none; /* ลบเส้นใต้ link */
+            display: block;
         }
 
-        /* เอฟเฟกต์ตอนชี้เมาส์ */
-        .partner-box:hover:not(.active) {
-            background: rgba(30, 30, 30, 0.85);
-            border: 1px solid rgba(255,255,255,0.15);
-            transform: translateY(-5px);
+        .partner-box:hover {
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .partner-box.active {
             background: rgba(15, 15, 15, 0.9);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             flex: 1.8;
             padding: 55px 20px;
             box-shadow: 0 0 40px rgba(0,0,0,1);
             border-radius: 15px;
-            cursor: default;
         }
 
         .partner-box h3 {
@@ -178,7 +180,11 @@
             letter-spacing: 2px;
             color: #666;
             text-transform: uppercase;
-            transition: 0.4s ease;
+            transition: 0.3s;
+        }
+
+        .partner-box:hover h3 {
+            color: #aaa;
         }
 
         .partner-box.active h3 {
@@ -194,7 +200,6 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: bold;
-            transition: 0.4s ease;
         }
 
         .partner-box.active span {
@@ -230,24 +235,24 @@
 
     <div class="partners-label">PARTNERS</div>
 
-    <div class="partner-container" id="partnerContainer">
-        <div class="partner-box">
+    <div class="partner-container">
+        <div class="partner-box" data-url="https://www.facebook.com/">
             <h3>GODYOUKNOW</h3>
             <span>PARTNER</span>
         </div>
-        <div class="partner-box">
+        <div class="partner-box" data-url="https://www.google.com/">
             <h3>KODOMO</h3>
             <span>PARTNER</span>
         </div>
-        <div class="partner-box active">
+        <div class="partner-box active" data-url="#">
             <h3>WINTERFELL VEGA</h3>
             <span>PARTNER</span>
         </div>
-        <div class="partner-box">
+        <div class="partner-box" data-url="https://github.com/">
             <h3>THREETHOUSAND</h3>
             <span>PARTNER</span>
         </div>
-        <div class="partner-box">
+        <div class="partner-box" data-url="https://www.youtube.com/">
             <h3>WELLESLEY</h3>
             <span>PARTNER</span>
         </div>
@@ -259,12 +264,19 @@
         const boxes = document.querySelectorAll('.partner-box');
 
         boxes.forEach(box => {
-            box.addEventListener('click', () => {
-                // เอา class 'active' ออกจากป้ายอื่นๆ ทั้งหมด
-                boxes.forEach(b => b.classList.remove('active'));
+            box.addEventListener('click', (e) => {
+                const url = box.getAttribute('data-url');
                 
-                // เพิ่ม class 'active' ให้ป้ายที่ถูกกด
-                box.classList.add('active');
+                // ถ้าป้ายไม่ได้ active ให้ทำการเลือกป้ายก่อน
+                if (!box.classList.contains('active')) {
+                    boxes.forEach(b => b.classList.remove('active'));
+                    box.classList.add('active');
+                } else {
+                    // ถ้ากดป้ายที่ active อยู่แล้ว ให้เปิด Link
+                    if (url !== "#") {
+                        window.open(url, '_blank'); // เปิดในแท็บใหม่
+                    }
+                }
             });
         });
     </script>

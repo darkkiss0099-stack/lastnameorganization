@@ -34,23 +34,23 @@
             z-index: -1;
         }
 
-        /* --- หัวข้อ Typewriter --- */
+        /* --- หัวข้อ Typewriter (ปรับขนาดเล็กลง) --- */
         .typewriter-container {
-            height: 80px;
+            height: 60px;
             display: flex;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .header-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.2rem;
-            letter-spacing: 18px;
+            font-size: 2.5rem;
+            letter-spacing: 15px;
             font-weight: 900;
             text-transform: uppercase;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 5px solid #fff;
+            border-right: 4px solid #fff;
             width: 0;
             animation: typing 4s steps(12) infinite, blink 0.5s step-end infinite;
         }
@@ -68,122 +68,123 @@
         }
 
         .sub-header {
-            font-size: 0.7rem;
-            letter-spacing: 10px;
+            font-size: 0.6rem;
+            letter-spacing: 8px;
             color: #222;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
-        /* --- กล่อง Card กลาง --- */
+        /* --- กล่อง Card กลาง (ปรับขนาดให้เล็กลงตามรูป) --- */
         .main-card {
             background: rgba(255, 255, 255, 0.005);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 40px;
-            width: 550px;
-            height: 250px;
+            border-radius: 30px;
+            width: 480px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,1);
-            margin-bottom: 50px;
+            box-shadow: 0 30px 80px rgba(0,0,0,1);
+            margin-bottom: 40px;
         }
 
         .main-logo {
-            width: 180px;
+            width: 150px;
             filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));
         }
 
-        /* --- ป้าย Partner ปรับขนาดตามรูป --- */
+        /* --- ส่วนของ Partners Label --- */
         .partners-label {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 0.65rem;
-            letter-spacing: 8px;
-            color: #333;
-            margin-bottom: 20px;
+            gap: 12px;
+            font-size: 0.55rem;
+            letter-spacing: 6px;
+            color: #2a2a2a;
+            margin-bottom: 15px;
             text-transform: uppercase;
             font-weight: bold;
         }
 
         .partners-label::before, .partners-label::after {
             content: "";
-            width: 50px;
+            width: 35px;
             height: 1px;
-            background: #1a1a1a;
+            background: #151515;
         }
 
+        /* --- ป้าย Partner ปรับขนาดกะทัดรัด --- */
         .partner-container {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             padding: 0 40px;
-            align-items: center;
+            align-items: flex-end; /* จัดให้ฐานเท่ากัน */
         }
 
         .partner-box {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            padding: 35px 15px;
-            border-radius: 8px; /* ขอบเหลี่ยมขึ้นตามรูป */
+            background: #080808;
+            border: 1px solid #151515;
+            padding: 25px 10px;
+            border-radius: 6px;
             flex: 1;
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.3s ease;
         }
 
-        /* ปรับแต่งพิเศษสำหรับป้าย Active ให้เหมือนรูป */
+        /* ป้าย Active ที่ปรับขนาดให้สมดุลตามตัวอย่าง */
         .partner-box.active {
-            background: #0f0f0f;
-            border: 2px solid #333; /* ขอบหนาและสว่างขึ้น */
-            flex: 1.8; /* กว้างกว่าป้ายอื่น */
-            padding: 55px 20px;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.02), 0 15px 40px rgba(0,0,0,1);
-            border-radius: 12px;
+            background: #0c0c0c;
+            border: 1.5px solid #252525;
+            flex: 1.4;
+            padding: 40px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,1);
+            border-radius: 10px;
             z-index: 5;
         }
 
         .partner-box h3 {
             font-family: 'Roboto Mono', monospace;
-            font-size: 1rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
             font-weight: 700;
-            color: #888;
-            margin-bottom: 5px;
+            color: #555;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
         .partner-box span {
-            font-size: 0.55rem;
-            color: #222;
-            letter-spacing: 2px;
+            font-size: 0.45rem;
+            color: #1a1a1a;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             font-weight: bold;
         }
 
         /* ข้อความในป้าย Active */
         .partner-box.active h3 {
-            font-size: 1.9rem; /* ฟอนต์ใหญ่และแบนกว้าง */
-            letter-spacing: 5px;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
             color: #fff;
-            transform: scaleX(1.1); /* ยืดฟอนต์ออกด้านข้างเหมือนตัวอย่าง */
-            margin-bottom: 15px;
+            transform: scaleX(1.05);
+            margin-bottom: 10px;
         }
 
         .partner-box.active span {
-            font-size: 0.75rem;
-            color: #444;
-            letter-spacing: 6px;
+            font-size: 0.6rem;
+            color: #333;
+            letter-spacing: 4px;
         }
 
         .footer-text {
             position: absolute;
-            bottom: 25px;
-            font-size: 0.55rem;
-            letter-spacing: 5px;
+            bottom: 20px;
+            font-size: 0.5rem;
+            letter-spacing: 4px;
             color: #111;
             text-transform: uppercase;
         }

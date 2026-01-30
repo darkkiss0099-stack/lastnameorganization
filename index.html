@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINTERFELL VEGA | UI CLONE</title>
+    <title>WINTERFELL VEGA | BLACKWHITE</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,9 +14,6 @@
 
         body {
             background-color: #050505;
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://wallpaperaccess.com/full/1150029.jpg');
-            background-size: cover;
-            background-position: center;
             color: #fff;
             height: 100vh;
             display: flex;
@@ -24,87 +21,97 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- หัวข้อใหญ่ด้านบน (WINTERFELL VEGA) --- */
-        .header-section {
-            text-align: center;
-            margin-bottom: 25px;
+        /* --- UI เดิม: พื้นหลังขยับได้ --- */
+        .bg-animate {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .bg-animate::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.15;
+            animation: moveBg 30s linear infinite;
+        }
+
+        @keyframes moveBg {
+            from { transform: translate(0, 0); }
+            to { transform: translate(5%, 5%); }
+        }
+
+        /* --- UI เดิม: หัวข้อ Typing Effect (ปรับขนาดใหม่) --- */
+        .typewriter-container {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
         }
 
         .header-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4.8rem; /* ขนาดใหญ่ตามรูป */
-            letter-spacing: 28px; /* ระยะห่างตัวอักษรกว้างมาก */
+            font-size: 4.8rem;
+            letter-spacing: 28px;
             font-weight: 900;
             text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 6px solid #fff;
+            width: 0;
+            animation: typing 4s steps(15) infinite, blink 0.5s step-end infinite;
             margin-right: -28px;
-            opacity: 0.95;
-            position: relative;
         }
 
-        /* ตัวขีดสีขาวด้านหลังชื่อ */
-        .header-title::after {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 60px;
-            background-color: #fff;
-            margin-left: 10px;
-            vertical-align: middle;
+        @keyframes typing {
+            0% { width: 0; }
+            45% { width: 100%; }
+            85% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #fff; }
         }
 
         .sub-header {
             font-size: 0.65rem;
             letter-spacing: 14px;
-            color: #444;
+            color: #333;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            margin-top: -5px;
         }
 
-        /* --- กล่อง Card กลาง (VEGA NEVER LOSE) --- */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.02);
+        /* --- กล่อง Card กลาง (สัดส่วนใหม่) --- */
+        .main-card {
+            background: rgba(255, 255, 255, 0.01);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 35px;
-            width: 580px; /* ขนาดกว้างตามรูป */
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+            width: 580px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
             margin-bottom: 60px;
         }
 
-        .crown-logo {
-            width: 70px;
-            margin-bottom: 20px;
-            filter: brightness(2);
+        .main-logo {
+            width: 220px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));
         }
 
-        .hero-card h2 {
-            font-size: 2rem;
-            letter-spacing: 4px;
-            line-height: 1.1;
-            font-weight: bold;
-        }
-
-        .tagline {
-            font-size: 0.6rem;
-            letter-spacing: 3px;
-            color: #888;
-            margin: 8px 0;
-            text-transform: uppercase;
-        }
-
-        .winter-text {
-            font-size: 1.8rem;
-            letter-spacing: 6px;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-
-        /* --- ส่วนของ Partners --- */
+        /* --- ป้าย Partner (สัดส่วนใหม่) --- */
         .partners-label {
             display: flex;
             align-items: center;
@@ -133,20 +140,20 @@
         }
 
         .partner-box {
-            background: rgba(10, 10, 10, 0.4);
+            background: #080808;
             border: 1px solid #111;
             padding: 35px 10px;
             border-radius: 10px;
             flex: 1;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.4s ease;
         }
 
-        /* ป้าย Active (WINTERFELL VEGA) ปรับให้เป๊ะตามรูป */
+        /* ป้าย Active ที่ขนาดเป๊ะตามรูป */
         .partner-box.active {
-            background: rgba(15, 15, 15, 0.8);
+            background: #0f0f0f;
             border: 1px solid #2a2a2a;
-            flex: 1.8; /* กว้างกว่าอันอื่น */
+            flex: 1.8;
             padding: 55px 20px;
             box-shadow: 0 0 40px rgba(0,0,0,1);
             border-radius: 15px;
@@ -160,10 +167,10 @@
         }
 
         .partner-box.active h3 {
-            font-size: 1.7rem; /* ฟอนต์ใหญ่มากตามรูป */
+            font-size: 1.7rem;
             color: #fff;
             letter-spacing: 3px;
-            transform: scaleX(1.1); /* ยืดฟอนต์ให้กว้างออกด้านข้าง */
+            transform: scaleX(1.1);
         }
 
         .partner-box span {
@@ -182,7 +189,7 @@
             display: block;
         }
 
-        .footer-design {
+        .footer-text {
             position: absolute;
             bottom: 25px;
             font-size: 0.55rem;
@@ -194,16 +201,15 @@
 </head>
 <body>
 
-    <div class="header-section">
-        <h1 class="header-title">WINTERFELL VEGA</h1>
-        <div class="sub-header">BORN OF WINTERFELL</div>
-    </div>
+    <div class="bg-animate"></div>
 
-    <div class="hero-card">
-        <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Crown" class="crown-logo">
-        <h2>VEGA<br>NEVER LOSE</h2>
-        <p class="tagline">STANDING IN THE</p>
-        <p class="winter-text">WINTER IS<br>COMING</p>
+    <div class="typewriter-container">
+        <h1 class="header-title">WINTERFELL VEGA</h1>
+    </div>
+    <div class="sub-header">BORN OF WINTERFELL</div>
+
+    <div class="main-card">
+        <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
     </div>
 
     <div class="partners-label">PARTNERS</div>
@@ -231,7 +237,7 @@
         </div>
     </div>
 
-    <div class="footer-design">SYSTEM DESIGN BY BLACKWHITE</div>
+    <div class="footer-text">SYSTEM DESIGN BY BLACKWHITE</div>
 
 </body>
 </html>

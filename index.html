@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEDKORDON</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -23,14 +23,13 @@
             width: 100vw;
             display: flex;
             flex-direction: column;
-            align-items: center; /* จัดกลางแนวนอน */
-            justify-content: center; /* จัดกลางแนวตั้ง */
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
             position: relative;
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- เอฟเฟกต์หมอกขยับได้ --- */
         .bg-animate {
             position: absolute;
             top: 0; left: 0;
@@ -142,19 +141,18 @@
             display: flex;
             gap: 12px;
             width: 100%;
-            max-width: 1280px; /* ลดขนาดรวมลงประมาณ 5% เพื่อให้ดูเล็กลง */
+            max-width: 1280px;
             padding: 0 60px;
             align-items: center;
             justify-content: center;
         }
 
-        /* --- ป้าย Partner ย่อขนาดลง 5% --- */
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 33px 9px; /* ลด padding ลง 5% */
+            padding: 33px 9px;
             border-radius: 10px;
-            flex: 0.95; /* ย่อขนาด flex พื้นฐานลง 5% */
+            flex: 0.95;
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
@@ -169,22 +167,22 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
 
-        /* ป้าย Active ย่อขนาดลง 5% จากสัดส่วนเดิม */
         .partner-box.active {
             background: rgba(15, 15, 15, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            flex: 1.71; /* ลดจาก 1.8 ลง 5% */
-            padding: 52px 19px; /* ลด padding ลง 5% */
+            flex: 1.71;
+            padding: 52px 19px;
             box-shadow: 0 0 40px rgba(0,0,0,1);
             border-radius: 15px;
         }
 
+        /* --- ปรับแต่ง FONT บางลง และขนาดเล็กลงตามสั่ง --- */
         .partner-box h3 {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.23rem; /* ลดขนาดฟอนต์ลงเล็กน้อยเพื่อให้พอดีกล่องที่เล็กลง */
+            font-size: 1.15rem; /* ย่อขนาดลงจากเดิม */
             letter-spacing: 2px;
-            font-weight: 700;
-            color: #666;
+            font-weight: 400; /* ปรับให้บางลง (Normal Weight) */
+            color: #555;
             text-transform: uppercase;
             transition: 0.3s;
             transform: scaleY(0.9);
@@ -196,26 +194,28 @@
 
         .partner-box.active h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.09rem; /* ลดขนาดฟอนต์ Active ลง 5% */
+            font-size: 1.95rem; /* ย่อขนาด Active ลงจากเดิม */
             color: #fff;
             letter-spacing: 6px;
+            font-weight: 600; /* ปรับ Active ให้บางลงจากเดิมที่เป็น Bold (700+) */
             transform: scaleY(1) scaleX(1.1);
             text-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         .partner-box span {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.57rem;
+            font-size: 0.55rem;
             color: #333;
             letter-spacing: 2px;
+            font-weight: 400; /* ปรับให้บางลง */
             text-transform: uppercase;
             display: block;
             margin-top: 5px;
         }
 
         .partner-box.active span {
-            color: #888;
-            font-size: 0.76rem;
+            color: #777;
+            font-size: 0.73rem;
             letter-spacing: 6px;
             margin-top: 10px;
         }

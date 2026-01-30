@@ -53,7 +53,7 @@
         }
 
         .typewriter-container {
-            height: 100px;
+            height: 80px;
             display: flex;
             align-items: center;
             margin-bottom: 5px;
@@ -61,8 +61,8 @@
 
         .header-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4.8rem;
-            letter-spacing: 28px;
+            font-size: 4rem; /* ปรับขนาดให้พอดีกับหน้าจอ */
+            letter-spacing: 20px;
             font-weight: 900;
             text-transform: uppercase;
             white-space: nowrap;
@@ -70,7 +70,7 @@
             border-right: 6px solid #fff;
             width: 0;
             animation: typing 4s steps(15) infinite, blink 0.5s step-end infinite;
-            margin-right: -28px;
+            margin-right: -20px;
         }
 
         @keyframes typing {
@@ -87,9 +87,9 @@
 
         .sub-header {
             font-size: 0.65rem;
-            letter-spacing: 14px;
+            letter-spacing: 12px;
             color: #ccc;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             text-transform: uppercase;
         }
 
@@ -98,17 +98,17 @@
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
-            width: 750px;
-            height: 320px;
+            width: 700px; /* ปรับขนาดกรอบให้กระชับขึ้น */
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .main-logo {
-            width: 320px; 
+            width: 280px; 
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
             opacity: 0.95;
         }
@@ -117,107 +117,109 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 0.55rem;
-            letter-spacing: 6px;
+            font-size: 0.5rem;
+            letter-spacing: 5px;
             color: #fff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            opacity: 0.6;
         }
 
         .partners-label::before, .partners-label::after {
             content: "";
-            width: 40px;
+            width: 30px;
             height: 1px;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.2);
         }
 
         .partner-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
-            max-width: 1350px;
-            padding: 0 60px;
+            max-width: 1250px;
+            padding: 0 40px;
             align-items: center;
         }
 
-        /* --- ปรับแต่งป้ายให้ FONT เหมือนรูปตัวอย่าง (STARK/FINALBOSS Style) --- */
         .partner-box {
-            background: rgba(8, 8, 8, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 35px 10px;
-            border-radius: 10px;
+            background: rgba(8, 8, 8, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 25px 5px; /* ปรับ padding ให้กระชับ */
+            border-radius: 8px;
             flex: 1;
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
             text-decoration: none;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100px;
         }
 
         .partner-box:hover {
             background: rgba(30, 30, 30, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .partner-box.active {
-            background: rgba(15, 15, 15, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            flex: 1.8;
-            padding: 55px 20px;
-            box-shadow: 0 0 40px rgba(0,0,0,1);
-            border-radius: 15px;
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex: 1.5; /* กว้างขึ้นเพื่อให้ตัวอักษรใหญ่ๆ พอดี */
+            padding: 35px 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border-radius: 12px;
         }
 
-        /* ปรับฟอนต์ชื่อในป้ายให้เหมือนในรูป */
+        /* ปรับฟอนต์ชื่อในป้ายปกติให้พอดี */
         .partner-box h3 {
-            font-family: 'Rajdhani', sans-serif; /* ฟอนต์แนวเหลี่ยมกว้าง */
-            font-size: 1.3rem;
-            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem; /* ขนาดที่อ่านง่ายและไม่ล้นกล่อง */
+            letter-spacing: 1.5px;
             font-weight: 700;
-            color: #666;
+            color: #555;
             text-transform: uppercase;
             transition: 0.3s;
-            transform: scaleY(0.9); /* บีบให้เตี้ยลงเล็กน้อยเพื่อให้ดูแบนกว้าง */
         }
 
         .partner-box:hover h3 {
-            color: #fff;
+            color: #eee;
         }
 
+        /* ปรับฟอนต์ป้าย Active ให้ใหญ่สะใจแต่ยังพอดีกับพื้นที่ */
         .partner-box.active h3 {
-            font-family: 'Orbitron', sans-serif; /* ใช้ Orbitron สำหรับป้ายที่เลือกเพื่อให้ดูหนาและคม */
-            font-size: 2.2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem; /* ปรับลดจากเดิมเล็กน้อยเพื่อให้พอดีกับพื้นที่ flex: 1.5 */
             color: #fff;
-            letter-spacing: 6px;
-            transform: scaleY(1) scaleX(1.1); /* ยืดออกข้างให้ดูแบนและกว้างเหมือนในรูป */
-            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+            letter-spacing: 4px;
+            transform: scaleX(1.05); /* ยืดออกข้างเล็กน้อยตามสไตล์รูปภาพ */
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .partner-box span {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.6rem;
-            color: #333;
-            letter-spacing: 2px;
+            font-size: 0.5rem;
+            color: #222;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             display: block;
-            margin-top: 5px;
+            margin-top: 6px;
         }
 
         .partner-box.active span {
-            color: #888;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            margin-top: 10px;
+            color: #666;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            margin-top: 8px;
         }
 
         .footer-text {
             position: absolute;
-            bottom: 25px;
-            font-size: 0.55rem;
-            letter-spacing: 6px;
-            color: rgba(255,255,255,0.2);
+            bottom: 20px;
+            font-size: 0.5rem;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.1);
             text-transform: uppercase;
         }
     </style>
@@ -264,7 +266,6 @@
 
     <script>
         const boxes = document.querySelectorAll('.partner-box');
-
         boxes.forEach(box => {
             box.addEventListener('click', () => {
                 const url = box.getAttribute('data-url');
@@ -274,6 +275,5 @@
             });
         });
     </script>
-
 </body>
 </html>

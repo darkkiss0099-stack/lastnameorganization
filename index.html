@@ -176,6 +176,31 @@
             border-radius: 15px;
         }
 
+        /* ส่วนที่เพิ่ม: จัดกลุ่ม Logo และ Text */
+        .title-with-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .dedkordon-icon {
+            width: 24px; /* ขนาดปกติสำหรับกล่องทั่วไป */
+            height: auto;
+            filter: grayscale(1) brightness(0.7);
+            transition: 0.3s;
+        }
+
+        .partner-box:hover .dedkordon-icon,
+        .partner-box.active .dedkordon-icon {
+            filter: grayscale(0) brightness(1);
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+        }
+
+        .partner-box.active .dedkordon-icon {
+            width: 38px; /* ขนาดใหญ่ขึ้นเมื่อกล่อง Active */
+        }
+
         .partner-box h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.05rem; 
@@ -259,10 +284,15 @@
             <h3>JQLUES</h3>
             <span>PARTNER</span>
         </div>
+        
         <div class="partner-box active" data-url="http://member.dedkordongg.xyz/">
-            <h3>DEDKORDON</h3>
+            <div class="title-with-logo">
+                <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" class="dedkordon-icon" alt="Icon">
+                <h3>DEDKORDON</h3>
+            </div>
             <span>LEADER</span>
         </div>
+
         <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342/">
             <h3>?</h3>
             <span>INBOX TO PARTNER</span>

@@ -1,557 +1,289 @@
 <!DOCTYPE html>
-
 <html lang="th">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>DEDKORDON</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-
     <style>
-
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
         }
-
-
 
         body {
-
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-
                         url('https://img5.pic.in.th/file/secure-sv1/14401b8158e755eb4a.jpg');
-
             background-size: cover;
-
             background-position: center;
-
             background-repeat: no-repeat;
-
             color: #fff;
-
             height: 100vh;
-
+            width: 100vw;
             display: flex;
-
             flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
+            align-items: center; /* จัดกลางแนวนอน */
+            justify-content: center; /* จัดกลางแนวตั้ง */
             overflow: hidden;
-
             position: relative;
-
             font-family: 'Roboto Mono', monospace;
-
         }
-
-
 
         /* --- เอฟเฟกต์หมอกขยับได้ --- */
-
         .bg-animate {
-
             position: absolute;
-
             top: 0; left: 0;
-
             width: 100%; height: 100%;
-
             z-index: -1;
-
         }
-
-
 
         .bg-animate::after {
-
             content: "";
-
             position: absolute;
-
             top: -50%; left: -50%;
-
             width: 200%; height: 200%;
-
             background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-
             opacity: 0.1;
-
             animation: moveBg 30s linear infinite;
-
         }
-
-
 
         @keyframes moveBg {
-
             from { transform: translate(0, 0); }
-
             to { transform: translate(5%, 5%); }
-
         }
 
-
-
+        /* --- หัวข้อ Typing Effect --- */
         .typewriter-container {
-
             height: 100px;
-
             display: flex;
-
+            justify-content: center;
             align-items: center;
-
             margin-bottom: 5px;
-
+            width: 100%;
         }
-
-
 
         .header-title {
-
             font-family: 'Orbitron', sans-serif;
-
             font-size: 4.8rem;
-
             letter-spacing: 28px;
-
             font-weight: 900;
-
             text-transform: uppercase;
-
             white-space: nowrap;
-
             overflow: hidden;
-
             border-right: 6px solid #fff;
-
             width: 0;
-
             animation: typing 4s steps(15) infinite, blink 0.5s step-end infinite;
-
-            margin-right: -28px;
-
+            margin-right: -28px; /* ชดเชยระยะ letter-spacing ตัวสุดท้ายเพื่อให้ดูตรงกลางเป๊ะ */
+            text-align: center;
         }
-
-
 
         @keyframes typing {
-
             0% { width: 0; }
-
             45% { width: 100%; }
-
             85% { width: 100%; }
-
             100% { width: 0; }
-
         }
-
-
 
         @keyframes blink {
-
             from, to { border-color: transparent; }
-
             50% { border-color: #fff; }
-
         }
-
-
 
         .sub-header {
-
             font-size: 0.65rem;
-
             letter-spacing: 14px;
-
             color: #ccc;
-
             margin-bottom: 40px;
-
             text-transform: uppercase;
-
+            text-align: center;
         }
 
-
-
+        /* --- กล่อง Card กลาง --- */
         .main-card {
-
             background: rgba(255, 255, 255, 0.03);
-
             backdrop-filter: blur(15px);
-
             border: 1px solid rgba(255, 255, 255, 0.1);
-
             border-radius: 25px;
-
             width: 750px;
-
             height: 320px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-
             margin-bottom: 60px;
-
         }
-
-
 
         .main-logo {
-
             width: 320px; 
-
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
-
             opacity: 0.95;
-
         }
 
-
-
+        /* --- ส่วนของ Partners --- */
         .partners-label {
-
             display: flex;
-
             align-items: center;
-
+            justify-content: center;
             gap: 15px;
-
             font-size: 0.55rem;
-
             letter-spacing: 6px;
-
             color: #fff;
-
             margin-bottom: 25px;
-
             text-transform: uppercase;
-
+            width: 100%;
         }
-
-
 
         .partners-label::before, .partners-label::after {
-
             content: "";
-
             width: 40px;
-
             height: 1px;
-
             background: rgba(255,255,255,0.3);
-
         }
-
-
 
         .partner-container {
-
             display: flex;
-
             gap: 12px;
-
             width: 100%;
-
             max-width: 1350px;
-
             padding: 0 60px;
-
             align-items: center;
-
+            justify-content: center;
         }
-
-
-
-        /* --- ปรับแต่งป้ายให้ FONT เหมือนรูปตัวอย่าง (STARK/FINALBOSS Style) --- */
 
         .partner-box {
-
             background: rgba(8, 8, 8, 0.8);
-
             border: 1px solid rgba(255, 255, 255, 0.05);
-
             padding: 35px 10px;
-
             border-radius: 10px;
-
             flex: 1;
-
             text-align: center;
-
             transition: all 0.4s ease;
-
             cursor: pointer;
-
             text-decoration: none;
-
             display: block;
-
         }
-
-
 
         .partner-box:hover {
-
             background: rgba(30, 30, 30, 0.9);
-
-            border: 1px solid rgba(255, 255, 255, 0.25);
-
+            border: 1px solid rgba(255,255,255,0.25);
             transform: translateY(-10px) scale(1.05);
-
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-
         }
-
-
 
         .partner-box.active {
-
             background: rgba(15, 15, 15, 0.9);
-
             border: 1px solid rgba(255, 255, 255, 0.3);
-
             flex: 1.8;
-
             padding: 55px 20px;
-
             box-shadow: 0 0 40px rgba(0,0,0,1);
-
             border-radius: 15px;
-
         }
-
-
-
-        /* ปรับฟอนต์ชื่อในป้ายให้เหมือนในรูป */
 
         .partner-box h3 {
-
-            font-family: 'Rajdhani', sans-serif; /* ฟอนต์แนวเหลี่ยมกว้าง */
-
+            font-family: 'Rajdhani', sans-serif;
             font-size: 1.3rem;
-
             letter-spacing: 2px;
-
             font-weight: 700;
-
             color: #666;
-
             text-transform: uppercase;
-
             transition: 0.3s;
-
-            transform: scaleY(0.9); /* บีบให้เตี้ยลงเล็กน้อยเพื่อให้ดูแบนกว้าง */
-
+            transform: scaleY(0.9);
         }
-
-
 
         .partner-box:hover h3 {
-
             color: #fff;
-
         }
-
-
 
         .partner-box.active h3 {
-
-            font-family: 'Orbitron', sans-serif; /* ใช้ Orbitron สำหรับป้ายที่เลือกเพื่อให้ดูหนาและคม */
-
+            font-family: 'Orbitron', sans-serif;
             font-size: 2.2rem;
-
             color: #fff;
-
             letter-spacing: 6px;
-
-            transform: scaleY(1) scaleX(1.1); /* ยืดออกข้างให้ดูแบนและกว้างเหมือนในรูป */
-
+            transform: scaleY(1) scaleX(1.1);
             text-shadow: 0 0 15px rgba(255,255,255,0.2);
-
         }
-
-
 
         .partner-box span {
-
             font-family: 'Orbitron', sans-serif;
-
             font-size: 0.6rem;
-
             color: #333;
-
             letter-spacing: 2px;
-
             text-transform: uppercase;
-
             display: block;
-
             margin-top: 5px;
-
         }
-
-
 
         .partner-box.active span {
-
             color: #888;
-
             font-size: 0.8rem;
-
             letter-spacing: 6px;
-
             margin-top: 10px;
-
         }
-
-
 
         .footer-text {
-
             position: absolute;
-
             bottom: 25px;
-
             font-size: 0.55rem;
-
             letter-spacing: 6px;
-
             color: rgba(255,255,255,0.2);
-
             text-transform: uppercase;
-
+            text-align: center;
+            width: 100%;
         }
-
     </style>
-
 </head>
-
 <body>
-
-
 
     <div class="bg-animate"></div>
 
-
-
     <div class="typewriter-container">
-
         <h1 class="header-title">DEDKORDONBOYZ</h1>
-
     </div>
-
     <div class="sub-header">HARD TO FALL</div>
 
-
-
     <div class="main-card">
-
         <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
-
     </div>
-
-
 
     <div class="partners-label">PARTNERS</div>
 
-
-
     <div class="partner-container">
-
         <div class="partner-box" data-url="https://www.facebook.com/">
-
             <h3>GODYOUKNOW</h3>
-
             <span>PARTNER</span>
-
         </div>
-
         <div class="partner-box" data-url="https://www.google.com/">
-
             <h3>TEST</h3>
-
             <span>PARTNER</span>
-
         </div>
-
         <div class="partner-box active" data-url="https://www.facebook.com/tsumaki.tsunaji.342?locale=th_TH">
-
             <h3>DEDKORDON</h3>
-
             <span>LEADER</span>
-
         </div>
-
         <div class="partner-box" data-url="https://github.com/">
-
             <h3>TESTE'D</h3>
-
             <span>PARTNER</span>
-
         </div>
-
         <div class="partner-box" data-url="https://www.youtube.com/">
-
             <h3>WELLESLEY</h3>
-
             <span>PARTNER</span>
-
         </div>
-
     </div>
 
-
-    <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342?locale=th_TH/">
     <div class="footer-text">SYSTEM DESIGN BY OSHI</div>
 
-
-
     <script>
-
         const boxes = document.querySelectorAll('.partner-box');
-
-
-
         boxes.forEach(box => {
-
             box.addEventListener('click', () => {
-
                 const url = box.getAttribute('data-url');
-
                 if (url && url !== "#") {
-
                     window.open(url, '_blank');
-
                 }
-
             });
-
         });
-
     </script>
 
-
-
 </body>
-
 </html>

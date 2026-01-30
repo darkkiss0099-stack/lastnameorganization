@@ -13,7 +13,6 @@
         }
 
         body {
-            /* เปลี่ยน BG เป็นรูปภาพตามที่ส่งมา */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://img5.pic.in.th/file/secure-sv1/14401b8158e755eb4a.jpg');
             background-size: cover;
@@ -30,7 +29,7 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- UI เดิม: เอฟเฟกต์หมอกขยับได้บนพื้นหลัง --- */
+        /* --- เอฟเฟกต์หมอกขยับได้ --- */
         .bg-animate {
             position: absolute;
             top: 0; left: 0;
@@ -53,7 +52,6 @@
             to { transform: translate(5%, 5%); }
         }
 
-        /* --- หัวข้อ Typing Effect --- */
         .typewriter-container {
             height: 100px;
             display: flex;
@@ -96,14 +94,13 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        /* --- ปรับขนาดกรอบ Card กลางให้เหมือนในรูปตัวอย่าง (สี่เหลี่ยมผืนผ้าแบนกว้าง) --- */
         .main-card {
-            background: rgba(255, 255, 255, 0.03); /* ปรับความโปร่งใสให้เห็น BG หลังเล็กน้อย */
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px; /* ความมนตามรูป */
-            width: 750px; /* ขนาดกว้างตามรูป */
-            height: 320px; /* ความสูงที่ทำให้ดูแบนกว้าง */
+            border-radius: 25px;
+            width: 750px;
+            height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -118,7 +115,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* --- ป้าย Partner --- */
         .partners-label {
             display: flex;
             align-items: center;
@@ -147,6 +143,7 @@
             align-items: center;
         }
 
+        /* --- ป้าย Partner ปรับให้เป็นปุ่มกดได้ --- */
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255,255,255,0.05);
@@ -154,7 +151,16 @@
             border-radius: 10px;
             flex: 1;
             text-align: center;
-            transition: 0.4s ease;
+            transition: all 0.4s ease;
+            cursor: pointer; /* เปลี่ยนเมาส์ให้เป็นรูปมือ */
+            user-select: none;
+        }
+
+        /* เอฟเฟกต์ตอนชี้เมาส์ */
+        .partner-box:hover:not(.active) {
+            background: rgba(30, 30, 30, 0.85);
+            border: 1px solid rgba(255,255,255,0.15);
+            transform: translateY(-5px);
         }
 
         .partner-box.active {
@@ -164,6 +170,7 @@
             padding: 55px 20px;
             box-shadow: 0 0 40px rgba(0,0,0,1);
             border-radius: 15px;
+            cursor: default;
         }
 
         .partner-box h3 {
@@ -171,6 +178,7 @@
             letter-spacing: 2px;
             color: #666;
             text-transform: uppercase;
+            transition: 0.4s ease;
         }
 
         .partner-box.active h3 {
@@ -186,6 +194,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: bold;
+            transition: 0.4s ease;
         }
 
         .partner-box.active span {
@@ -221,7 +230,7 @@
 
     <div class="partners-label">PARTNERS</div>
 
-    <div class="partner-container">
+    <div class="partner-container" id="partnerContainer">
         <div class="partner-box">
             <h3>GODYOUKNOW</h3>
             <span>PARTNER</span>
@@ -245,6 +254,20 @@
     </div>
 
     <div class="footer-text">SYSTEM DESIGN BY BLACKWHITE</div>
+
+    <script>
+        const boxes = document.querySelectorAll('.partner-box');
+
+        boxes.forEach(box => {
+            box.addEventListener('click', () => {
+                // เอา class 'active' ออกจากป้ายอื่นๆ ทั้งหมด
+                boxes.forEach(b => b.classList.remove('active'));
+                
+                // เพิ่ม class 'active' ให้ป้ายที่ถูกกด
+                box.classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

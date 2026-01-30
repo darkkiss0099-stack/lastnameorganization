@@ -176,16 +176,15 @@
             border-radius: 15px;
         }
 
-        /* --- ปรับแต่ง FONT บางลง และขนาดเล็กลงตามสั่ง --- */
+        /* --- แก้ไข FONT ทุกกล่องให้เป็น Orbitron ตามสั่ง --- */
         .partner-box h3 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.15rem; /* ย่อขนาดลงจากเดิม */
-            letter-spacing: 2px;
-            font-weight: 400; /* ปรับให้บางลง (Normal Weight) */
+            font-family: 'Orbitron', sans-serif; /* เปลี่ยนจาก Rajdhani เป็น Orbitron */
+            font-size: 1.05rem; 
+            letter-spacing: 3px;
+            font-weight: 400; 
             color: #555;
             text-transform: uppercase;
             transition: 0.3s;
-            transform: scaleY(0.9);
         }
 
         .partner-box:hover h3 {
@@ -194,23 +193,28 @@
 
         .partner-box.active h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.95rem; /* ย่อขนาด Active ลงจากเดิม */
+            font-size: 1.95rem; 
             color: #fff;
             letter-spacing: 6px;
-            font-weight: 600; /* ปรับ Active ให้บางลงจากเดิมที่เป็น Bold (700+) */
-            transform: scaleY(1) scaleX(1.1);
+            font-weight: 700; 
+            transform: scaleY(1) scaleX(1.05);
             text-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         .partner-box span {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             color: #333;
             letter-spacing: 2px;
-            font-weight: 400; /* ปรับให้บางลง */
+            font-weight: 400; 
             text-transform: uppercase;
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
+            transition: 0.3s;
+        }
+
+        .partner-box:hover span {
+            color: #666;
         }
 
         .partner-box.active span {

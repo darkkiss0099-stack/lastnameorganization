@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINTERFELL VEGA | BLACKWHITE</title>
+    <title>DEDKORDON NAKUB | BLACKWHITE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
@@ -22,6 +22,7 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
+            font-family: 'Roboto Mono', monospace;
         }
 
         /* --- เอฟเฟกต์พื้นหลังขยับได้ --- */
@@ -39,7 +40,7 @@
             top: -50%; left: -50%;
             width: 200%; height: 200%;
             background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.15;
+            opacity: 0.1;
             animation: moveBg 30s linear infinite;
         }
 
@@ -48,31 +49,33 @@
             to { transform: translate(5%, 5%); }
         }
 
-        /* --- หัวข้อพิมพ์แล้วลบ (Typing Effect) --- */
+        /* --- หัวข้อพิมพ์แล้วลบ (Typing Effect) ด้วยฟอนต์ใหม่ --- */
         .typewriter-container {
-            height: 80px;
+            height: 100px;
             display: flex;
             align-items: center;
             margin-bottom: 5px;
         }
 
         .header-title {
-            font-size: 3.8rem;
-            letter-spacing: 20px;
-            font-weight: bold;
+            font-family: 'Orbitron', sans-serif; /* ฟอนต์แนว Sci-fi/Gang */
+            font-size: 4rem;
+            letter-spacing: 18px;
+            font-weight: 900;
             text-transform: uppercase;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 4px solid #fff; /* ตัว Cursor */
+            border-right: 5px solid #fff;
             width: 0;
-            animation: typing 3.5s steps(15) infinite, blink 0.5s step-end infinite;
+            animation: typing 4s steps(15) infinite, blink 0.5s step-end infinite;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
         }
 
         @keyframes typing {
             0% { width: 0; }
-            50% { width: 100%; } /* พิมพ์เสร็จ */
-            90% { width: 100%; } /* ค้างไว้แป๊บหนึ่ง */
-            100% { width: 0; }    /* ลบกลับ */
+            45% { width: 100%; }
+            85% { width: 100%; }
+            100% { width: 0; }
         }
 
         @keyframes blink {
@@ -81,93 +84,109 @@
         }
 
         .sub-header {
-            font-size: 0.7rem;
-            letter-spacing: 10px;
-            color: #444;
-            margin-bottom: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 12px;
+            color: #333;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
 
-        /* --- กล่อง Card กลาง (เหลือแค่ LOGO ขนาดใหญ่) --- */
+        /* --- กล่อง Card กลาง (LOGO) --- */
         .main-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 30px;
-            width: 650px;
-            height: 350px;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 40px;
+            width: 600px;
+            height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
-            margin-bottom: 50px;
-            transition: 0.5s;
-        }
-
-        .main-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 60px 120px rgba(0,0,0,1);
+            margin-bottom: 60px;
         }
 
         .main-logo {
-            width: 220px; /* ขยายขนาด LOGO ให้ใหญ่เด่น */
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-            opacity: 0.95;
+            width: 240px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.05));
         }
 
-        /* --- ส่วนล่าง (Partners) --- */
+        /* --- ป้าย Partner (ปรับตามรูปภาพใหม่) --- */
         .partner-container {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             justify-content: center;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         .partner-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px 15px;
-            border-radius: 15px;
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            padding: 40px 10px;
+            border-radius: 12px;
             flex: 1;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .partner-box:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-10px);
-        }
-
+        /* กล่องตัวเลือกที่ถูกเลือก (WINTERFELL VEGA) */
         .partner-box.active {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: #111;
+            border: 1.5px solid #333;
+            transform: scale(1.05); /* ขยายใหญ่กว่าเพื่อนเล็กน้อย */
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            z-index: 2;
         }
 
+        /* ชื่อ Partner */
         .partner-box h3 {
-            font-size: 0.8rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem;
             letter-spacing: 3px;
-            margin-bottom: 5px;
-            color: #eee;
-        }
-
-        .partner-box span {
-            font-size: 0.55rem;
-            color: #444;
-            letter-spacing: 2px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
-        /* --- Footer --- */
+        /* คำว่า PARTNER ด้านล่าง */
+        .partner-box span {
+            font-size: 0.65rem;
+            color: #444;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* เส้นขีดตกแต่งเหมือนในรูป (Partners Header) */
+        .partners-label {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 8px;
+            color: #222;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .partners-label::before, .partners-label::after {
+            content: "";
+            width: 40px;
+            height: 1px;
+            background: #111;
+        }
+
         .footer-text {
             position: absolute;
             bottom: 30px;
             font-size: 0.6rem;
             letter-spacing: 5px;
-            color: #222;
+            color: #1a1a1a;
             text-transform: uppercase;
         }
     </style>
@@ -179,11 +198,13 @@
     <div class="typewriter-container">
         <h1 class="header-title">WINTERFELL VEGA</h1>
     </div>
-    <div class="sub-header">Born of Winterfell</div>
+    <div class="sub-header">ALL WAY TO STAR DIFFERENT</div>
 
     <div class="main-card">
         <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
     </div>
+
+    <div class="partners-label">Partners</div>
 
     <div class="partner-container">
         <div class="partner-box">
@@ -196,7 +217,7 @@
         </div>
         <div class="partner-box active">
             <h3>WINTERFELL VEGA</h3>
-            <span>Leader Partner</span>
+            <span>Partner</span>
         </div>
         <div class="partner-box">
             <h3>THREETHOUSAND</h3>

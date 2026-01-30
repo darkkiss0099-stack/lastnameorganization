@@ -6,6 +6,7 @@
     <title>DEDKORDON</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* สไตล์เดิมของคุณ */
         * {
             margin: 0;
             padding: 0;
@@ -158,6 +159,7 @@
             cursor: pointer;
             text-decoration: none;
             display: block;
+            position: relative;
         }
 
         .partner-box:hover {
@@ -174,6 +176,22 @@
             padding: 52px 19px;
             box-shadow: 0 0 40px rgba(0,0,0,1);
             border-radius: 15px;
+            /* เพิ่ม Flex เพื่อจัดเรียงโลโก้คู่กับข้อความ */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* สไตล์สำหรับโลโก้ขนาดเล็กในกล่อง */
+        .box-logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+
+        .partner-info {
+            text-align: left;
         }
 
         .partner-box h3 {
@@ -191,12 +209,10 @@
         }
 
         .partner-box.active h3 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 1.95rem; 
             color: #fff;
             letter-spacing: 6px;
             font-weight: 700; 
-            transform: scaleY(1) scaleX(1.05);
             text-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
@@ -220,7 +236,7 @@
             color: #777;
             font-size: 0.73rem;
             letter-spacing: 6px;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .footer-text {
@@ -259,10 +275,15 @@
             <h3>JQLUES</h3>
             <span>PARTNER</span>
         </div>
+
         <div class="partner-box active" data-url="http://member.dedkordongg.xyz/">
-            <h3>DEDKORDON</h3>
-            <span>LEADER</span>
+            <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Mini Logo" class="box-logo">
+            <div class="partner-info">
+                <h3>DEDKORDON</h3>
+                <span>LEADER</span>
+            </div>
         </div>
+
         <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342/">
             <h3>?</h3>
             <span>INBOX TO PARTNER</span>

@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WINTERFELL VEGA | BLACKWHITE</title>
     <style>
-        /* ตั้งค่าพื้นฐาน */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background-color: #0a0a0a; /* สีดำพื้นหลัง */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                              url('https://wallpaperaccess.com/full/1150029.jpg'); /* ใส่รูปพื้นหลังโทนเข้ม */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #050505;
             color: #fff;
             height: 100vh;
             display: flex;
@@ -27,133 +21,179 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
-        /* ส่วนหัวข้อใหญ่ */
+        /* --- เอฟเฟกต์พื้นหลังขยับได้ --- */
+        .bg-animate {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .bg-animate::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.2;
+            animation: moveBg 30s linear infinite;
+        }
+
+        @keyframes moveBg {
+            from { transform: translate(0, 0); }
+            to { transform: translate(5%, 5%); }
+        }
+
+        /* --- หัวข้อใหญ่ด้านบน --- */
         .header-title {
-            font-size: 4rem;
-            letter-spacing: 15px;
-            font-weight: bold;
+            font-size: 3.8rem;
+            letter-spacing: 25px;
+            font-weight: 500;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             opacity: 0.9;
         }
 
-        /* กล่อง Logo ตรงกลาง */
+        .sub-header {
+            font-size: 0.7rem;
+            letter-spacing: 10px;
+            color: #666;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* --- กล่อง Card กลาง (ปรับขนาดตามตัวอย่าง) --- */
         .main-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            width: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 50px 20px;
+            width: 650px; /* ขยายความกว้าง */
+            height: 320px; /* ปรับความสูง */
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
             margin-bottom: 40px;
         }
 
         .main-logo {
-            width: 150px;
+            width: 90px;
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+            opacity: 0.9;
         }
 
         .main-card h2 {
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            letter-spacing: 6px;
+            font-weight: bold;
+            line-height: 1.2;
         }
 
         .main-card p {
-            font-size: 0.9rem;
-            color: #888;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            color: #aaa;
+            letter-spacing: 4px;
+            margin-top: 5px;
             text-transform: uppercase;
         }
 
-        /* ส่วนของ Partners/List ด้านล่าง */
+        /* --- ส่วนล่าง (Partners) --- */
         .partner-container {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
-            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1000px;
         }
 
         .partner-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
-            border-radius: 10px;
-            transition: 0.3s;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            flex: 1;
             text-align: center;
-            min-width: 180px;
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .partner-box:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-8px);
         }
 
         .partner-box.active {
-            border: 1.5px solid #fff;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .partner-box h3 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            color: #fff;
         }
 
         .partner-box span {
-            font-size: 0.6rem;
-            color: #666;
+            font-size: 0.55rem;
+            color: #555;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Footer */
+        /* --- Footer --- */
         .footer-text {
             position: absolute;
-            bottom: 20px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            color: #444;
+            bottom: 30px;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            color: #333;
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <h1 class="header-title">BLACK WHITE</h1>
+    <div class="bg-animate"></div>
+
+    <h1 class="header-title">WINTERFELL VEGA</h1>
+    <div class="sub-header">Born of Winterfell</div>
 
     <div class="main-card">
         <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
-        <h2>NEVER LOSE</h2>
-        <p>Standing in the darkness</p>
+        <h2>VEGA<br>NEVER LOSE</h2>
+        <p>Standing in the<br>Winter is Coming</p>
     </div>
 
     <div class="partner-container">
         <div class="partner-box">
             <h3>GODYOUKNOW</h3>
-            <span>MEMBER</span>
+            <span>Partner</span>
         </div>
         <div class="partner-box">
             <h3>KODOMO</h3>
-            <span>MEMBER</span>
+            <span>Partner</span>
         </div>
         <div class="partner-box active">
-            <h3>BLACKWHITE</h3>
-            <span>LEADER</span>
+            <h3>WINTERFELL VEGA</h3>
+            <span>Partner</span>
         </div>
         <div class="partner-box">
             <h3>THREETHOUSAND</h3>
-            <span>MEMBER</span>
+            <span>Partner</span>
         </div>
         <div class="partner-box">
             <h3>WELLESLEY</h3>
-            <span>MEMBER</span>
+            <span>Partner</span>
         </div>
     </div>
 

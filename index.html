@@ -44,8 +44,8 @@
 
         .header-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            letter-spacing: 20px;
+            font-size: 3.2rem;
+            letter-spacing: 18px;
             font-weight: 900;
             text-transform: uppercase;
             white-space: nowrap;
@@ -68,114 +68,119 @@
         }
 
         .sub-header {
-            font-size: 0.75rem;
-            letter-spacing: 12px;
-            color: #333;
-            margin-bottom: 50px;
+            font-size: 0.7rem;
+            letter-spacing: 10px;
+            color: #222;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
 
-        /* --- กล่อง Card กลาง --- */
+        /* --- กล่อง Card กลาง (LOGO) --- */
         .main-card {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.005);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             border-radius: 40px;
-            width: 580px;
-            height: 300px;
+            width: 550px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 50px 100px rgba(0,0,0,1);
-            margin-bottom: 60px;
+            box-shadow: 0 40px 100px rgba(0,0,0,1);
+            margin-bottom: 50px;
         }
 
         .main-logo {
-            width: 220px;
+            width: 200px;
             filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));
         }
 
-        /* --- ป้าย Partner (ปรับใหม่ตามรูป) --- */
+        /* --- ปรับแต่งป้าย Partner ให้เหมือนรูป --- */
         .partners-label {
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-size: 0.65rem;
-            letter-spacing: 8px;
-            color: #222;
-            margin-bottom: 25px;
+            gap: 15px;
+            font-size: 0.6rem;
+            letter-spacing: 6px;
+            color: #333;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .partners-label::before, .partners-label::after {
             content: "";
-            width: 50px;
+            width: 40px;
             height: 1px;
-            background: #111;
+            background: #1a1a1a;
         }
 
         .partner-container {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             justify-content: center;
             width: 100%;
-            max-width: 1300px;
-            padding: 0 40px;
+            max-width: 1400px;
+            padding: 0 50px;
+            align-items: center;
         }
 
         .partner-box {
-            background: linear-gradient(145deg, #0d0d0d, #080808);
-            border: 1px solid #151515;
-            padding: 45px 15px;
-            border-radius: 15px;
+            background: #080808; /* สีดำสนิทแบบในรูป */
+            border: 1.5px solid #111;
+            padding: 35px 10px; /* ปรับให้แบนลง */
+            border-radius: 12px;
             flex: 1;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
+            transition: all 0.4s ease;
         }
 
-        /* กล่อง Active เหมือนในรูปตัวอย่าง */
+        /* ปรับขนาดกล่อง Active ให้กว้างและเด่นขึ้นเหมือนในรูป */
         .partner-box.active {
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            transform: scale(1.15); /* ขยายใหญ่เด่น */
-            box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 20px rgba(255,255,255,0.02);
-            z-index: 10;
+            background: #0a0a0a;
+            border: 1.5px solid #2a2a2a; /* ขอบขาวจางๆ */
+            flex: 1.5; /* กว้างกว่าเพื่อน */
+            padding: 50px 15px; /* สูงกว่าเพื่อนเล็กน้อย */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border-radius: 18px;
         }
 
         .partner-box h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            letter-spacing: 2px;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 10px;
+            color: #eee;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
 
         .partner-box span {
-            font-size: 0.6rem;
-            color: #444;
-            letter-spacing: 3px;
+            font-size: 0.55rem;
+            color: #333;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: bold;
         }
 
+        /* ข้อความในป้าย Active */
         .partner-box.active h3 {
-            letter-spacing: 5px;
-            font-size: 1.35rem;
+            font-size: 1.6rem; /* ขนาดฟอนต์ใหญ่ตามรูป */
+            letter-spacing: 4px;
+            color: #fff;
         }
 
         .partner-box.active span {
-            color: #666;
+            font-size: 0.65rem;
+            color: #555;
         }
 
         .footer-text {
             position: absolute;
-            bottom: 30px;
-            font-size: 0.6rem;
-            letter-spacing: 5px;
-            color: #151515;
+            bottom: 25px;
+            font-size: 0.55rem;
+            letter-spacing: 4px;
+            color: #111;
             text-transform: uppercase;
         }
     </style>

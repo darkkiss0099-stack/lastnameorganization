@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEDKORDON</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=VT323&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -140,7 +140,7 @@
             align-items: center;
         }
 
-        /* --- ปรับแต่งป้ายให้ FONT เหมือนรูปตัวอย่าง (Pixel/Dotted Style) --- */
+        /* --- ปรับแต่งป้ายให้ FONT เหมือนรูปตัวอย่าง (STARK/FINALBOSS Style) --- */
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -148,7 +148,7 @@
             border-radius: 10px;
             flex: 1;
             text-align: center;
-            transition: 0.4s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
             text-decoration: none;
             display: block;
@@ -156,7 +156,7 @@
 
         .partner-box:hover {
             background: rgba(30, 30, 30, 0.9);
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
@@ -170,14 +170,16 @@
             border-radius: 15px;
         }
 
-        /* ใช้ฟอนต์แนว Pixel ตามรูป */
+        /* ปรับฟอนต์ชื่อในป้ายให้เหมือนในรูป */
         .partner-box h3 {
-            font-family: 'VT323', monospace; /* ฟอนต์แนว Pixel/Old School */
-            font-size: 1.5rem; /* ขนาดใหญ่ขึ้นเล็กน้อยเพื่อให้ชัด */
+            font-family: 'Rajdhani', sans-serif; /* ฟอนต์แนวเหลี่ยมกว้าง */
+            font-size: 1.3rem;
             letter-spacing: 2px;
-            color: #888;
+            font-weight: 700;
+            color: #666;
             text-transform: uppercase;
             transition: 0.3s;
+            transform: scaleY(0.9); /* บีบให้เตี้ยลงเล็กน้อยเพื่อให้ดูแบนกว้าง */
         }
 
         .partner-box:hover h3 {
@@ -185,27 +187,29 @@
         }
 
         .partner-box.active h3 {
-            font-size: 2.8rem; /* ขยายขนาดใหญ่ตามรูป */
+            font-family: 'Orbitron', sans-serif; /* ใช้ Orbitron สำหรับป้ายที่เลือกเพื่อให้ดูหนาและคม */
+            font-size: 2.2rem;
             color: #fff;
-            letter-spacing: 5px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            letter-spacing: 6px;
+            transform: scaleY(1) scaleX(1.1); /* ยืดออกข้างให้ดูแบนและกว้างเหมือนในรูป */
+            text-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         .partner-box span {
-            font-family: 'VT323', monospace;
-            font-size: 0.9rem;
-            color: #444;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            color: #333;
             letter-spacing: 2px;
             text-transform: uppercase;
             display: block;
-            margin-top: 2px;
+            margin-top: 5px;
         }
 
         .partner-box.active span {
-            color: #aaa;
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            margin-top: 5px;
+            color: #888;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            margin-top: 10px;
         }
 
         .footer-text {

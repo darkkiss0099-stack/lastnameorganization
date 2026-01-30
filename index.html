@@ -145,7 +145,7 @@
             align-items: center;
         }
 
-        /* --- ปรับแต่งป้าย Partner ให้กด Link ได้ --- */
+        /* --- ป้าย Partner ปรับให้กด Link ได้ทันที --- */
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255,255,255,0.05);
@@ -153,17 +153,19 @@
             border-radius: 10px;
             flex: 1;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
-            text-decoration: none; /* ลบเส้นใต้ link */
+            text-decoration: none;
             display: block;
         }
 
+        /* เอฟเฟกต์ตอน Hover ให้ดูขยายขึ้นเล็กน้อย */
         .partner-box:hover {
             background: rgba(30, 30, 30, 0.9);
-            border: 1px solid rgba(255,255,255,0.2);
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.25);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            z-index: 10;
         }
 
         .partner-box.active {
@@ -184,7 +186,7 @@
         }
 
         .partner-box:hover h3 {
-            color: #aaa;
+            color: #fff; /* เปลี่ยนสีตัวอักษรตอน Hover */
         }
 
         .partner-box.active h3 {
@@ -264,18 +266,12 @@
         const boxes = document.querySelectorAll('.partner-box');
 
         boxes.forEach(box => {
-            box.addEventListener('click', (e) => {
+            box.addEventListener('click', () => {
                 const url = box.getAttribute('data-url');
                 
-                // ถ้าป้ายไม่ได้ active ให้ทำการเลือกป้ายก่อน
-                if (!box.classList.contains('active')) {
-                    boxes.forEach(b => b.classList.remove('active'));
-                    box.classList.add('active');
-                } else {
-                    // ถ้ากดป้ายที่ active อยู่แล้ว ให้เปิด Link
-                    if (url !== "#") {
-                        window.open(url, '_blank'); // เปิดในแท็บใหม่
-                    }
+                // เปิด Link ทันทีที่คลิก
+                if (url && url !== "#") {
+                    window.open(url, '_blank');
                 }
             });
         });

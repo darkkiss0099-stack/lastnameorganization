@@ -91,36 +91,34 @@
             text-transform: uppercase;
         }
 
-        /* --- กล่อง Card กลาง (ปรับขนาดใหม่ให้รองรับ LOGO ที่ใหญ่ขึ้น) --- */
+        /* --- ปรับขนาดกล่อง Card กลางให้ใหญ่ขึ้นเพื่อรองรับ LOGO --- */
         .main-card {
             background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 40px;
-            width: 620px; /* ขยายความกว้างกล่องเล็กน้อย */
-            height: 350px; /* เพิ่มความสูงกล่อง */
+            width: 650px; /* เพิ่มความกว้าง */
+            height: 380px; /* เพิ่มความสูง */
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 50px 120px rgba(0,0,0,1);
             margin-bottom: 60px;
-            transition: 0.3s;
         }
 
-        /* --- แก้ไข LOGO ให้ใหญ่ขึ้น --- */
+        /* --- ปรับขนาด LOGO ให้ใหญ่ขึ้นสะใจ --- */
         .main-logo {
-            width: 280px; /* ปรับขนาดจาก 220px เป็น 280px */
-            filter: drop-shadow(0 0 25px rgba(255,255,255,0.1));
+            width: 320px; /* ขยายจาก 220px เป็น 320px */
+            filter: drop-shadow(0 0 25px rgba(255,255,255,0.15));
             opacity: 0.95;
-            transition: 0.5s;
+            transition: transform 0.3s ease;
         }
 
         .main-card:hover .main-logo {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 35px rgba(255,255,255,0.2));
+            transform: scale(1.05); /* เพิ่มลูกเล่นขยายตอนเอาเมาส์วาง */
         }
 
-        /* --- ป้าย Partner --- */
+        /* --- ป้าย Partner (สัดส่วนเดิม) --- */
         .partners-label {
             display: flex;
             align-items: center;

@@ -52,9 +52,9 @@
         @keyframes rotate-border { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .logo-wrapper { position: relative; z-index: 2; }
-        .main-logo { width: 680px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); opacity: 0.95; display: block; }
+        .main-logo { width: 550px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); opacity: 0.95; display: block; }
 
-        /* --- PARTNERS Section --- */
+        /* --- แก้ไข: ป้าย PARTNERS สไตล์ใหม่ตามรูป --- */
         .partners-label { 
             display: flex; align-items: center; justify-content: center; gap: 20px; 
             font-size: 0.7rem; letter-spacing: 8px; color: #fff; margin-bottom: 15px; 
@@ -63,22 +63,76 @@
         .partners-label::before, .partners-label::after { content: ""; height: 1px; width: 100px; background: rgba(255, 255, 255, 0.2); }
 
         .combined-partner-bar {
-            background: rgba(15, 15, 15, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 90%; max-width: 600px; padding: 25px;
-            display: flex; align-items: center; justify-content: center; gap: 40px;
+            background: rgba(15, 15, 15, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 90%;
+            max-width: 1100px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* จัดไปทางซ้ายตามรูป */
+            gap: 50px;
             position: relative;
+            backdrop-filter: blur(5px);
         }
-        .member-side-label {
-            border-left: 4px solid #fff; padding-left: 15px;
-            font-family: 'Orbitron', sans-serif; font-size: 1.1rem; letter-spacing: 4px;
+
+        /* กล่อง MEMBER ด้านซ้าย */
+        .member-side-box {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 40px;
+            border-left: 3px solid #fff;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* ทรงสี่เหลี่ยมคางหมูเอียงตามรูป */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        .partner-list {
-            display: flex; gap: 15px; font-size: 1.2rem; font-weight: bold;
-            color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+        /* รายชื่อ Partner ด้านขวา */
+        .partner-list-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* ชิดขวาตามรูป */
+            flex-grow: 1;
         }
-        .partner-list span { cursor: pointer; transition: 0.3s; }
-        .partner-list span:hover { color: #00e5ff; text-shadow: 0 0 15px #00e5ff; }
+
+        .partner-names {
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .partner-names span {
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .partner-names span:hover {
+            color: #00e5ff;
+            text-shadow: 0 0 20px #00e5ff;
+        }
+
+        .partner-label-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+            text-transform: uppercase;
+        }
+
+        .click-info {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 5px;
+        }
 
         /* --- Music Player --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
@@ -116,11 +170,16 @@
     <div class="partners-label">PARTNERS</div>
 
     <div class="combined-partner-bar">
-        <div class="member-side-label">MEMBER</div>
-        <div class="partner-list">
-            <span onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">JQLUES</span>
-            <span>×</span>
-            <span onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">DEDKORDON</span>
+        <div class="member-side-box">MEMBER</div>
+        
+        <div class="partner-list-container">
+            <div class="partner-label-text">PARTNER</div>
+            <div class="partner-names">
+                <span onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">JQLUES</span>
+                <span style="color: rgba(255,255,255,0.2); cursor: default;">×</span>
+                <span onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">DEDKORDON</span>
+            </div>
+            <div class="click-info">คลิกที่ชื่อ PARTNER เพื่อค้นหาสมาชิก</div>
         </div>
     </div>
 

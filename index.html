@@ -16,18 +16,26 @@
             font-family: 'Roboto Mono', monospace;
         }
 
+        /* --- Header Typewriter (Looping) --- */
         .typewriter-container { height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 5px; width: 100%; }
         .header-title {
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
-            width: 0; animation: typing 3s steps(13) forwards, blink 0.6s step-end infinite; margin-right: -28px; text-align: center;
+            width: 0; 
+            /* อนิเมชั่นพิมพ์แล้วลบวนลูป */
+            animation: typing-loop 4s steps(9) infinite, blink 0.6s step-end infinite; 
+            margin-right: -28px; text-align: center;
         }
-        @keyframes typing { from { width: 0; } to { width: 850px; } }
+        @keyframes typing-loop {
+            0%, 10% { width: 0; }
+            45%, 55% { width: 550px; } /* ปรับความกว้างให้พอดีกับคำว่า DEDKORDON */
+            90%, 100% { width: 0; }
+        }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
         
-        /* --- LOGO หมุน --- */
+        /* --- LOGO แสงวิ่ง --- */
         .main-card { 
             background: rgba(255, 255, 255, 0.03); 
             backdrop-filter: blur(15px); 
@@ -36,43 +44,38 @@
             width: 750px; height: 320px; 
             display: flex; align-items: center; justify-content: center; 
             box-shadow: 0 40px 100px rgba(0,0,0,0.8); 
-            margin-bottom: 60px; 
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
         }
-        .main-logo { 
-            width: 280px; 
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); 
-            opacity: 0.95; 
-            animation: rotateLogo 10s linear infinite; /* สั่งให้หมุน */
+        .logo-wrapper { position: relative; display: inline-block; overflow: hidden; }
+        .main-logo { width: 280px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); opacity: 0.95; display: block; }
+        .logo-wrapper::after {
+            content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); animation: shine 3s infinite;
         }
-        @keyframes rotateLogo {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes shine { 0% { left: -100%; } 20% { left: 150%; } 100% { left: 150%; } }
 
         .partners-label { display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 0.55rem; letter-spacing: 6px; color: #fff; margin-bottom: 25px; text-transform: uppercase; width: 100%; }
         .partner-container { display: flex; gap: 20px; width: 100%; max-width: 600px; padding: 0 20px; align-items: center; justify-content: center; }
         
-        /* --- ป้ายเรืองแสงเมื่อ Hover --- */
+        /* --- ป้ายเรืองแสงสีฟ้า --- */
         .partner-box { 
             background: rgba(40, 40, 40, 0.6); 
             border: 2px solid rgba(255, 255, 255, 0.1); 
-            padding: 40px 0; 
-            border-radius: 20px; 
-            text-align: center; 
-            transition: all 0.3s ease; 
-            cursor: pointer; 
-            text-decoration: none; 
-            flex: 1; 
-            min-width: 250px; 
+            padding: 40px 0; border-radius: 20px; 
+            text-align: center; transition: all 0.3s ease; 
+            cursor: pointer; text-decoration: none; flex: 1; min-width: 250px; 
         }
         .partner-box:hover { 
             background: rgba(20, 20, 20, 0.8); 
-            border: 2px solid #00e5ff; /* สีฟ้าเรืองแสงตามรูป */
+            border: 2px solid #00e5ff; 
             transform: translateY(-10px); 
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); 
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6); 
         }
         .partner-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: #fff; margin-bottom: 5px; }
-        .partner-box span { font-size: 0.7rem; color: #00e5ff; letter-spacing: 2px; text-transform: capitalize; }
+        .partner-box span { font-size: 0.7rem; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
 
         /* --- Music Player Section --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
@@ -93,9 +96,10 @@
         .progress-bar { width: 0%; height: 100%; background: #fff; border-radius: 2px; }
         .time-info { display: flex; justify-content: space-between; font-size: 0.6rem; color: #555; margin-bottom: 15px; }
 
-        /* --- Volume Slider (ปรับตามรูป 1) --- */
+        /* --- Volume Section --- */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .volume-icon { font-size: 1rem; color: #aaa; }
+        /* ปรับรูปไอคอนเสียงตามภาพที่ส่งมา */
+        .volume-img { width: 22px; height: auto; opacity: 0.8; filter: invert(1); }
         .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; }
         .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; transition: width 0.1s; }
 
@@ -109,12 +113,14 @@
 <body>
 
     <div class="typewriter-container">
-        <h1 class="header-title">DEDKORDONBOYZ</h1>
+        <h1 class="header-title">DEDKORDON</h1>
     </div>
     <div class="sub-header">HARD TO FALL</div>
 
     <div class="main-card">
-        <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
+        <div class="logo-wrapper">
+            <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo">
+        </div>
     </div>
 
     <div class="partners-label">PARTNERS</div>
@@ -160,7 +166,7 @@
             </div>
 
             <div class="volume-section">
-                <div class="volume-icon">🔉</div>
+                <img src="https://img5.pic.in.th/file/secure-sv1/image_e73cc1.png" class="volume-img" alt="vol">
                 <div class="volume-slider-container" id="vol-container" onclick="setVolume(event)">
                     <div class="volume-progress" id="vol-bar"></div>
                 </div>

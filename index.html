@@ -22,13 +22,12 @@
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
             width: 0; 
-            /* ปรับ steps(9) ให้เท่ากับจำนวนตัวอักษร D-E-D-K-O-R-D-O-N */
             animation: typing-loop 4s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -28px; text-align: center;
         }
         @keyframes typing-loop {
             0%, 10% { width: 0; }
-            45%, 55% { width: 700px; } /* ปรับความกว้างให้ครอบคลุมตัวอักษรทั้งหมด */
+            45%, 55% { width: 850px; } /* เพิ่มความกว้างเพื่อให้เห็นตัวอักษรครบทั้งหมด */
             90%, 100% { width: 0; }
         }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
@@ -104,7 +103,11 @@
 
         .controls { display: flex; justify-content: center; align-items: center; }
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
+        
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
+        /* สไตล์สำหรับลิงก์ OSHI */
+        .footer-text a { color: inherit; text-decoration: none; transition: 0.3s; }
+        .footer-text a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
         #yt-player { display: none; }
     </style>
@@ -178,7 +181,7 @@
     </div>
 
     <div id="yt-player"></div>
-    <div class="footer-text">SYSTEM DESIGN BY OSHI</div>
+    <div class="footer-text">SYSTEM DESIGN BY <a href="https://www.facebook.com/tsumaki.tsunaji.342" target="_blank">OSHI</a></div>
 
     <script>
         var tag = document.createElement('script');

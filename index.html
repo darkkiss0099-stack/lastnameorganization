@@ -22,15 +22,14 @@
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
             width: 0; 
-            /* ปรับเวลา animation รวมเป็น 7 วินาที (พิมพ์ 2s + ค้าง 3s + ลบ 2s) */
             animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -28px; text-align: center;
         }
         
         @keyframes typing-loop {
-            0%, 5% { width: 0; }           /* เริ่มต้น */
-            25%, 70% { width: 850px; }     /* พิมพ์เสร็จที่ 25% แล้วค้างไว้จนถึง 70% (ประมาณ 3 วินาที) */
-            95%, 100% { width: 0; }        /* ลบกลับจนหมด */
+            0%, 5% { width: 0; }
+            25%, 70% { width: 850px; }
+            95%, 100% { width: 0; }
         }
         
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
@@ -59,9 +58,8 @@
         }
         @keyframes shine { 0% { left: -100%; } 20% { left: 150%; } 100% { left: 150%; } }
 
-        .partners-label { display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 0.55rem; letter-spacing: 6px; color: #fff; margin-bottom: 25px; text-transform: uppercase; width: 100%; }
+        /* --- ป้ายเรืองแสงสีฟ้า --- */
         .partner-container { display: flex; gap: 20px; width: 100%; max-width: 600px; padding: 0 20px; align-items: center; justify-content: center; }
-        
         .partner-box { 
             background: rgba(40, 40, 40, 0.6); 
             border: 2px solid rgba(255, 255, 255, 0.1); 
@@ -107,8 +105,19 @@
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
         
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
-        .footer-text a { color: inherit; text-decoration: none; transition: 0.3s; }
-        .footer-text a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        
+        /* --- แก้ไข: ลิงก์ OSHI เรืองแสง --- */
+        .footer-text a { 
+            color: #00e5ff; /* สีฟ้าเริ่มต้น */
+            text-decoration: none; 
+            transition: 0.3s; 
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.8); /* เอฟเฟกต์เรืองแสง */
+            font-weight: bold;
+        }
+        .footer-text a:hover { 
+            color: #fff; 
+            text-shadow: 0 0 15px rgba(0, 229, 255, 1), 0 0 20px rgba(0, 229, 255, 0.6); 
+        }
 
         #yt-player { display: none; }
     </style>
@@ -131,7 +140,7 @@
     <div class="partner-container">
         <div class="partner-box" onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">
             <h3>JQLUES</h3>
-            <span>Partner</span>
+            <span>LEADER</span>
         </div>
         <div class="partner-box" onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">
             <h3>DEDKORDON</h3>
@@ -156,8 +165,8 @@
             <div class="full-body">
                 <img src="https://i.ytimg.com/vi/P8Am-QTUQes/maxresdefault.jpg" alt="Song Art">
                 <div class="full-info">
-                    <h4>IS THERE SOMEONE ELSE?</h4>
-                    <p>THE WEEKND</p>
+                    <h4>NEVER LOSE ME</h4>
+                    <p>Flo Milli</p>
                 </div>
             </div>
             <div class="progress-container">

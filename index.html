@@ -23,33 +23,23 @@
 
         /* --- Canvas สำหรับฝนตก --- */
         #rainCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* เพื่อให้ยังกดปุ่มต่างๆ บนหน้าเว็บได้ */
-            z-index: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
         }
 
-        /* จัดตำแหน่งเนื้อหาให้อยู่เหนือฝน */
         .content-wrapper {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
+            position: relative; z-index: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; width: 100%;
         }
 
-        /* --- Header Typewriter --- */
+        /* --- Header Section (ปรับขนาดและแสงตามรูป) --- */
         .typewriter-container { height: 120px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; width: 100%; }
         .header-title {
             font-family: 'Orbitron', sans-serif; font-size: 5.5rem; letter-spacing: 32px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 8px solid #fff;
             width: 0; animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -32px; text-align: center;
+            /* แสงเรืองขาวสว่าง */
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4);
         }
         @keyframes typing-loop { 0%, 5% { width: 0; } 25%, 70% { width: 950px; } 95%, 100% { width: 0; } }
@@ -61,23 +51,18 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         
-        /* --- โลโก้ใหม่ หมุนรอบตัวเองแนวระนาบ --- */
+        /* --- โลโก้หมุนรอบตัวเอง พลิกจากซ้าย --- */
         .spinning-logo-container {
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
+            margin-bottom: 60px; display: flex; justify-content: center; align-items: center; perspective: 1000px;
         }
         .main-logo-spin {
-            width: 320px;
-            filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
-            animation: rotate-self-y 8s linear infinite;
+            width: 320px; filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
+            animation: flip-left 8s linear infinite;
             transform-style: preserve-3d;
         }
-        @keyframes rotate-self-y {
+        @keyframes flip-left {
             from { transform: rotateY(0deg); }
-            to { transform: rotateY(-360deg); }
+            to { transform: rotateY(-360deg); } /* เริ่มหมุนไปทางซ้าย */
         }
 
         /* --- PARTNERS Section --- */
@@ -110,25 +95,27 @@
         .partner-label-text { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; margin-bottom: 5px; }
         .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); }
 
-        /* --- Music Player Section (Square) --- */
+        /* --- Music Player Section (กรอบทรงเหลี่ยมตัดมุม) --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
         .music-mini { 
             background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 5px; padding: 8px 25px 8px 8px; 
-            display: flex; align-items: center; gap: 15px; cursor: pointer; backdrop-filter: blur(10px); 
+            padding: 8px 25px 8px 8px; display: flex; align-items: center; gap: 15px; 
+            cursor: pointer; backdrop-filter: blur(10px);
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%); /* ทรงเหลี่ยมตัดมุม */
         }
-        .music-mini img { width: 45px; height: 45px; border-radius: 2px; border: 1px solid #333; object-fit: cover; }
+        .music-mini img { width: 45px; height: 45px; border: 1px solid #333; object-fit: cover; }
         .music-full { 
             display: none; background: #0f0f0f; border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 5px; width: 320px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            width: 320px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+            clip-path: polygon(3% 0, 100% 0, 97% 100%, 0% 100%); /* ทรงเหลี่ยมตัดมุม */
         }
-        .music-full img { border-radius: 2px !important; }
+        .music-full img { border-radius: 0px !important; }
         .progress-bar { width: 0%; height: 100%; background: #fff; }
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
         .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; cursor: pointer; }
-        .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; user-select: none; }
-        .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50% !important; pointer-events: none; }
-        .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
+        .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); position: relative; cursor: pointer; user-select: none; }
+        .volume-progress { height: 100%; background: #fff; width: 50% !important; pointer-events: none; }
+        .play-btn { background: #fff; color: #000; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
         
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
         .footer-text a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4); }
@@ -193,10 +180,9 @@
     </div>
 
     <div id="yt-player"></div>
-    <div class="footer-text">SYSTEM DESIGN BY <a href="https://www.facebook.com/tsumaki.tsunaji.342" target="_blank">OSHI</a></div>
+    <div class="footer-text">© 2K26 DEDKORDON | Designed by <a href="https://www.facebook.com/tsumaki.tsunaji.342" target="_blank">OSHI</a></div>
 
     <script>
-        // --- ส่วนของ Rain Effect ---
         const canvas = document.getElementById('rainCanvas');
         const ctx = canvas.getContext('2d');
         let width, height, drops = [];
@@ -206,39 +192,24 @@
             height = canvas.height = window.innerHeight;
             drops = [];
             for (let i = 0; i < 150; i++) {
-                drops.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    len: Math.random() * 20 + 10,
-                    speed: Math.random() * 10 + 5
-                });
+                drops.push({ x: Math.random() * width, y: Math.random() * height, len: Math.random() * 20 + 10, speed: Math.random() * 10 + 5 });
             }
         }
 
         function drawRain() {
             ctx.clearRect(0, 0, width, height);
             ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-            ctx.lineWidth = 1;
-            ctx.lineCap = 'round';
+            ctx.lineWidth = 1; ctx.lineCap = 'round';
             drops.forEach(d => {
-                ctx.beginPath();
-                ctx.moveTo(d.x, d.y);
-                ctx.lineTo(d.x, d.y + d.len);
-                ctx.stroke();
-                d.y += d.speed;
-                if (d.y > height) {
-                    d.y = -d.len;
-                    d.x = Math.random() * width;
-                }
+                ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d.x, d.y + d.len); ctx.stroke();
+                d.y += d.speed; if (d.y > height) { d.y = -d.len; d.x = Math.random() * width; }
             });
             requestAnimationFrame(drawRain);
         }
 
         window.addEventListener('resize', initRain);
-        initRain();
-        drawRain();
+        initRain(); drawRain();
 
-        // --- ส่วนของ YouTube API และเครื่องเล่นเพลง ---
         var tag = document.createElement('script'); tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         var player;
@@ -275,12 +246,7 @@
         }
 
         let isMuted = false;
-        function toggleMute() {
-            if (!player) return;
-            if (isMuted) { player.unMute(); isMuted = false; }
-            else { player.mute(); isMuted = true; }
-        }
-
+        function toggleMute() { if (!player) return; if (isMuted) { player.unMute(); isMuted = false; } else { player.mute(); isMuted = true; } }
         function formatTime(time) { let m = Math.floor(time / 60); let s = Math.floor(time % 60); return m + ":" + (s < 10 ? '0' : '') + s; }
         function togglePlayer() { let mini = document.getElementById('player-mini'); let full = document.getElementById('player-full'); if (full.style.display === 'none' || full.style.display === '') { full.style.display = 'block'; mini.style.display = 'none'; } else { full.style.display = 'none'; mini.style.display = 'flex'; } }
         let isPlaying = true; function togglePlayPause() { let btn = document.getElementById('master-play'); if (isPlaying) { player.pauseVideo(); btn.innerText = "▶"; } else { player.playVideo(); btn.innerText = "||"; } isPlaying = !isPlaying; }

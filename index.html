@@ -66,36 +66,28 @@
             background: rgba(15, 15, 15, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
             width: 90%; max-width: 1100px; padding: 30px;
-            display: flex; align-items: center; justify-content: flex-start;
-            gap: 50px; position: relative; backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: space-between; /* ปรับให้กระจายหัวท้าย */
+            gap: 20px; position: relative; backdrop-filter: blur(5px);
         }
 
-        /* กล่องซ้าย เปลี่ยนเป็นชื่อ DEDKORDON และทำให้คลิกได้ */
-        .member-side-box {
+        /* กล่องสไตล์สี่เหลี่ยมคางหมูเอียง (สำหรับทั้ง DEDKORDON และ JQLUES) */
+        .trapezoid-box {
             position: relative; background: rgba(255, 255, 255, 0.05);
             padding: 15px 40px; border-left: 3px solid #fff;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
             font-family: 'Orbitron', sans-serif; font-size: 1.2rem;
-            letter-spacing: 5px; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            letter-spacing: 5px; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             cursor: pointer; transition: 0.3s;
         }
-        .member-side-box:hover { background: rgba(255, 255, 255, 0.15); text-shadow: 0 0 15px #fff; }
+        .trapezoid-box:hover { background: rgba(255, 255, 255, 0.15); text-shadow: 0 0 15px #fff; transform: scale(1.05); }
 
-        .partner-list-container { display: flex; flex-direction: column; align-items: flex-end; flex-grow: 1; }
+        .partner-center-info { display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
 
-        .partner-names {
-            display: flex; gap: 20px; font-size: 1.6rem; font-weight: 700;
-            color: #fff; 
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5);
-            margin-bottom: 10px; letter-spacing: 2px;
+        .partner-label-text { 
+            font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; 
+            color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; margin-bottom: 5px;
         }
-
-        .partner-names span { cursor: pointer; transition: 0.3s ease; }
-        .partner-names span:hover { color: #00e5ff; text-shadow: 0 0 20px #00e5ff; }
-
-        .partner-label-text { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; }
-        .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); margin-top: 5px; }
+        .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); }
 
         /* --- Music Player --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
@@ -108,10 +100,7 @@
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
         
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
-        .footer-text a { 
-            color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
-        }
+        .footer-text a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4); }
         .footer-text a:hover { text-shadow: 0 0 15px #00e5ff; }
 
         #yt-player { display: none; }
@@ -133,15 +122,14 @@
     <div class="partners-label">PARTNERS</div>
 
     <div class="combined-partner-bar">
-        <div class="member-side-box" onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">DEDKORDON</div>
+        <div class="trapezoid-box" onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">DEDKORDON</div>
         
-        <div class="partner-list-container">
-            <div class="partner-label-text">PARTNER</div>
-            <div class="partner-names">
-                <span onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">JQLUES</span>
-            </div>
-            <div class="click-info">คลิกที่ชื่อเพื่อค้นหาสมาชิก</div>
+        <div class="partner-center-info">
+            <div class="partner-label-text">REAK MEMBER ALL 2K26</div>
+            <div class="click-info">คลิกที่ป้ายเพื่อค้นหาสมาชิก</div>
         </div>
+
+        <div class="trapezoid-box" onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">JQLUES</div>
     </div>
 
     <div id="music-container">

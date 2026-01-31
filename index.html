@@ -22,13 +22,13 @@
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
             width: 0; 
-            /* อนิเมชั่นพิมพ์แล้วลบวนลูป */
+            /* ปรับ steps(9) ให้เท่ากับจำนวนตัวอักษร D-E-D-K-O-R-D-O-N */
             animation: typing-loop 4s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -28px; text-align: center;
         }
         @keyframes typing-loop {
             0%, 10% { width: 0; }
-            45%, 55% { width: 550px; } /* ปรับความกว้างให้พอดีกับคำว่า DEDKORDON */
+            45%, 55% { width: 700px; } /* ปรับความกว้างให้ครอบคลุมตัวอักษรทั้งหมด */
             90%, 100% { width: 0; }
         }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
@@ -98,7 +98,6 @@
 
         /* --- Volume Section --- */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        /* ปรับรูปไอคอนเสียงตามภาพที่ส่งมา */
         .volume-img { width: 22px; height: auto; opacity: 0.8; filter: invert(1); }
         .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; }
         .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; transition: width 0.1s; }

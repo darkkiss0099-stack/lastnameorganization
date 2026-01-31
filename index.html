@@ -34,25 +34,23 @@
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
         
-        /* --- Main Card Border Glow --- */
-        .main-card { 
-            position: relative; width: 750px; height: 320px; border-radius: 25px; 
-            display: flex; align-items: center; justify-content: center; overflow: hidden;
-            background: rgba(0, 0, 0, 0.8); box-shadow: 0 40px 100px rgba(0,0,0,0.8); margin-bottom: 60px;
+        /* --- โลโก้ใหม่ หมุนรอบตัวเอง --- */
+        .spinning-logo-container {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
-        .main-card::before {
-            content: ""; position: absolute; width: 250%; height: 500%;
-            background: conic-gradient(transparent, #ffffff, transparent 40%);
-            left: -75%; top: -200%; animation: rotate-border 6s linear infinite;
+        .main-logo-spin {
+            width: 300px; /* ปรับขนาดโลโก้ */
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
+            animation: spin 10s linear infinite;
         }
-        .main-card::after {
-            content: ""; position: absolute; inset: 4px; 
-            background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(15px); border-radius: 22px; z-index: 1;
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        @keyframes rotate-border { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .logo-wrapper { position: relative; z-index: 2; }
-        .main-logo { width: 550px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); opacity: 0.95; display: block; }
 
         /* --- PARTNERS Section --- */
         .partners-label { 
@@ -86,31 +84,24 @@
 
         /* --- Music Player Section (Square) --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
-        
         .music-mini { 
             background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 5px; padding: 8px 25px 8px 8px; 
             display: flex; align-items: center; gap: 15px; cursor: pointer; backdrop-filter: blur(10px); 
         }
         .music-mini img { width: 45px; height: 45px; border-radius: 2px; border: 1px solid #333; object-fit: cover; }
-        
         .music-full { 
             display: none; background: #0f0f0f; border: 1px solid rgba(255, 255, 255, 0.1); 
             border-radius: 5px; width: 320px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
         }
         .music-full img { border-radius: 2px !important; }
-
         .progress-bar { width: 0%; height: 100%; background: #fff; }
-        
-        /* Volume Section */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; cursor: pointer; transition: 0.2s; }
-        .volume-icon-svg:hover { opacity: 1; transform: scale(1.1); }
-        
+        .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; cursor: pointer; }
         .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; user-select: none; }
         .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; pointer-events: none; }
-
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
+        
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
         .footer-text a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4); }
 
@@ -124,10 +115,8 @@
     </div>
     <div class="sub-header">HARD TO FALL</div>
 
-    <div class="main-card">
-        <div class="logo-wrapper">
-            <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-2c5d9ff8c5970bc57.png" alt="Logo" class="main-logo">
-        </div>
+    <div class="spinning-logo-container">
+        <img src="https://img2.pic.in.th/Untitled-2abc1d067d1c658d9.png" alt="Logo" class="main-logo-spin">
     </div>
 
     <div class="partners-label">PARTNERS</div>

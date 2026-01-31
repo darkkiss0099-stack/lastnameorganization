@@ -54,7 +54,7 @@
         .logo-wrapper { position: relative; z-index: 2; }
         .main-logo { width: 550px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.2)); opacity: 0.95; display: block; }
 
-        /* --- แก้ไข: ป้าย PARTNERS สไตล์ใหม่ตามรูป --- */
+        /* --- PARTNERS Section --- */
         .partners-label { 
             display: flex; align-items: center; justify-content: center; gap: 20px; 
             font-size: 0.7rem; letter-spacing: 8px; color: #fff; margin-bottom: 15px; 
@@ -65,74 +65,35 @@
         .combined-partner-bar {
             background: rgba(15, 15, 15, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 90%;
-            max-width: 1100px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start; /* จัดไปทางซ้ายตามรูป */
-            gap: 50px;
-            position: relative;
-            backdrop-filter: blur(5px);
+            width: 90%; max-width: 1100px; padding: 30px;
+            display: flex; align-items: center; justify-content: flex-start;
+            gap: 50px; position: relative; backdrop-filter: blur(5px);
         }
 
-        /* กล่อง MEMBER ด้านซ้าย */
         .member-side-box {
-            position: relative;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 40px;
-            border-left: 3px solid #fff;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* ทรงสี่เหลี่ยมคางหมูเอียงตามรูป */
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative; background: rgba(255, 255, 255, 0.05);
+            padding: 15px 40px; border-left: 3px solid #fff;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            font-family: 'Orbitron', sans-serif; font-size: 1.2rem;
+            letter-spacing: 5px; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* รายชื่อ Partner ด้านขวา */
-        .partner-list-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* ชิดขวาตามรูป */
-            flex-grow: 1;
-        }
+        .partner-list-container { display: flex; flex-direction: column; align-items: flex-end; flex-grow: 1; }
 
+        /* ปรับฟอนต์ในป้ายให้เรืองแสงและใช้ฟอนต์เดียวกับ Dedkordon */
         .partner-names {
-            display: flex;
-            gap: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            font-family: 'Rajdhani', sans-serif;
-            margin-bottom: 10px;
+            display: flex; gap: 20px; font-size: 1.6rem; font-weight: 700;
+            color: #fff; 
+            font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5); /* เรืองแสงขาว */
+            margin-bottom: 10px; letter-spacing: 2px;
         }
 
-        .partner-names span {
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
+        .partner-names span { cursor: pointer; transition: 0.3s ease; }
+        .partner-names span:hover { color: #00e5ff; text-shadow: 0 0 20px #00e5ff; }
 
-        .partner-names span:hover {
-            color: #00e5ff;
-            text-shadow: 0 0 20px #00e5ff;
-        }
-
-        .partner-label-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            color: #fff;
-            text-shadow: 0 0 10px #fff;
-            text-transform: uppercase;
-        }
-
-        .click-info {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.3);
-            margin-top: 5px;
-        }
+        .partner-label-text { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; }
+        .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); margin-top: 5px; }
 
         /* --- Music Player --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
@@ -171,7 +132,6 @@
 
     <div class="combined-partner-bar">
         <div class="member-side-box">MEMBER</div>
-        
         <div class="partner-list-container">
             <div class="partner-label-text">PARTNER</div>
             <div class="partner-names">
@@ -191,7 +151,6 @@
                 <span style="font-size: 0.85rem; font-weight:bold; color:#fff;">NEVER LOSE ME</span>
             </div>
         </div>
-
         <div class="music-full" id="player-full">
             <div style="display:flex; justify-content:space-between; color:#aaa; font-size:0.7rem; margin-bottom:20px; cursor:pointer;" onclick="togglePlayer()">
                 <span>● NOW PLAYING</span><span>▼</span>
@@ -217,35 +176,12 @@
         var tag = document.createElement('script'); tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-player', { height: '0', width: '0', videoId: 'P8Am-QTUQes', playerVars: { 'autoplay': 1, 'controls': 0, 'loop': 1, 'playlist': 'P8Am-QTUQes' }, events: { 'onReady': onPlayerReady } });
-        }
-        function onPlayerReady(event) {
-            player.setVolume(50); document.body.addEventListener('click', () => { event.target.playVideo(); }, { once: true });
-            setInterval(() => { if(player && player.getCurrentTime) {
-                let curr = player.getCurrentTime(); let dur = player.getDuration();
-                document.getElementById('p-bar').style.width = (curr / dur * 100) + "%";
-                document.getElementById('curr-time').innerText = formatTime(curr);
-                document.getElementById('total-time').innerText = formatTime(dur);
-            }}, 1000);
-        }
-        function setVolume(e) {
-            let rect = e.currentTarget.getBoundingClientRect(); let x = e.clientX - rect.left;
-            let percent = Math.round((x / rect.width) * 100); if (percent < 0) percent = 0; if (percent > 100) percent = 100;
-            document.getElementById('vol-bar').style.width = percent + "%"; if (player) player.setVolume(percent);
-        }
+        function onYouTubeIframeAPIReady() { player = new YT.Player('yt-player', { height: '0', width: '0', videoId: 'P8Am-QTUQes', playerVars: { 'autoplay': 1, 'controls': 0, 'loop': 1, 'playlist': 'P8Am-QTUQes' }, events: { 'onReady': onPlayerReady } }); }
+        function onPlayerReady(event) { player.setVolume(50); document.body.addEventListener('click', () => { event.target.playVideo(); }, { once: true }); setInterval(() => { if(player && player.getCurrentTime) { let curr = player.getCurrentTime(); let dur = player.getDuration(); document.getElementById('p-bar').style.width = (curr / dur * 100) + "%"; document.getElementById('curr-time').innerText = formatTime(curr); document.getElementById('total-time').innerText = formatTime(dur); }}, 1000); }
+        function setVolume(e) { let rect = e.currentTarget.getBoundingClientRect(); let x = e.clientX - rect.left; let percent = Math.round((x / rect.width) * 100); if (percent < 0) percent = 0; if (percent > 100) percent = 100; document.getElementById('vol-bar').style.width = percent + "%"; if (player) player.setVolume(percent); }
         function formatTime(time) { let m = Math.floor(time / 60); let s = Math.floor(time % 60); return m + ":" + (s < 10 ? '0' : '') + s; }
-        function togglePlayer() {
-            let mini = document.getElementById('player-mini'); let full = document.getElementById('player-full');
-            if (full.style.display === 'none' || full.style.display === '') { full.style.display = 'block'; mini.style.display = 'none'; }
-            else { full.style.display = 'none'; mini.style.display = 'flex'; }
-        }
-        let isPlaying = true;
-        function togglePlayPause() {
-            let btn = document.getElementById('master-play');
-            if (isPlaying) { player.pauseVideo(); btn.innerText = "▶"; } else { player.playVideo(); btn.innerText = "||"; }
-            isPlaying = !isPlaying;
-        }
+        function togglePlayer() { let mini = document.getElementById('player-mini'); let full = document.getElementById('player-full'); if (full.style.display === 'none' || full.style.display === '') { full.style.display = 'block'; mini.style.display = 'none'; } else { full.style.display = 'none'; mini.style.display = 'flex'; } }
+        let isPlaying = true; function togglePlayPause() { let btn = document.getElementById('master-play'); if (isPlaying) { player.pauseVideo(); btn.innerText = "▶"; } else { player.playVideo(); btn.innerText = "||"; } isPlaying = !isPlaying; }
     </script>
 </body>
 </html>

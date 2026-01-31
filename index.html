@@ -14,7 +14,6 @@
             color: #fff;            /* ตัวอักษรสีขาว */
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
-        /* สำหรับบราวเซอร์ Firefox */
         ::-moz-selection {
             background-color: #000;
             color: #fff;
@@ -47,7 +46,7 @@
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
         
-        /* --- กรอบ LOGO แสงวนตามจังหวะเพลง --- */
+        /* --- กรอบ LOGO แสงวนสีขาวตามจังหวะเพลงแบบช้าๆ --- */
         .main-card { 
             position: relative;
             width: 750px; height: 320px; 
@@ -59,20 +58,22 @@
             margin-bottom: 60px;
         }
 
+        /* แสงวนที่กรอบ (เปลี่ยนเป็นสีขาว) */
         .main-card::before {
             content: "";
             position: absolute;
-            width: 200%; height: 500%;
-            background: conic-gradient(transparent, #00e5ff, transparent 30%);
-            left: -50%; top: -200%;
-            animation: rotate-border var(--speed, 4s) linear infinite;
+            width: 250%; height: 500%;
+            /* แก้ไขเป็นสีขาว */
+            background: conic-gradient(transparent, #ffffff, transparent 40%);
+            left: -75%; top: -200%;
+            animation: rotate-border var(--speed, 6s) linear infinite;
         }
 
         .main-card::after {
             content: "";
             position: absolute;
             inset: 4px; 
-            background: rgba(15, 15, 15, 0.9);
+            background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(15px);
             border-radius: 22px;
             z-index: 1;
@@ -92,32 +93,26 @@
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); 
             opacity: 0.95; 
             display: block;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.3s ease-out; /* ปรับการตอบสนองให้นุ่มนวลขึ้น */
         }
 
-        /* --- PARTNERS Label (สไตล์ตามรูป) --- */
+        /* --- PARTNERS Label --- */
         .partners-label { 
             display: flex; align-items: center; justify-content: center; gap: 20px; 
             font-size: 0.7rem; letter-spacing: 8px; color: #fff; margin-bottom: 25px; 
             text-transform: uppercase; width: 100%; font-family: 'Orbitron', sans-serif;
         }
-        .partners-label::before, .partners-label::after {
-            content: ""; height: 1px; width: 100px; background: rgba(255, 255, 255, 0.2);
-        }
+        .partners-label::before, .partners-label::after { content: ""; height: 1px; width: 100px; background: rgba(255, 255, 255, 0.2); }
 
         .partner-container { display: flex; gap: 20px; width: 100%; max-width: 600px; padding: 0 20px; align-items: center; justify-content: center; }
         .partner-box { 
-            background: rgba(40, 40, 40, 0.6); 
-            border: 2px solid rgba(255, 255, 255, 0.1); 
-            padding: 40px 0; border-radius: 20px; 
-            text-align: center; transition: all 0.3s ease; 
+            background: rgba(40, 40, 40, 0.6); border: 2px solid rgba(255, 255, 255, 0.1); 
+            padding: 40px 0; border-radius: 20px; text-align: center; transition: all 0.3s ease; 
             cursor: pointer; text-decoration: none; flex: 1; min-width: 250px; 
         }
         .partner-box:hover { 
-            background: rgba(20, 20, 20, 0.8); 
-            border: 2px solid #00e5ff; 
-            transform: translateY(-10px); 
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6); 
+            background: rgba(20, 20, 20, 0.8); border: 2px solid #00e5ff; 
+            transform: translateY(-10px); box-shadow: 0 0 25px rgba(0, 229, 255, 0.6); 
         }
         .partner-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: #fff; margin-bottom: 5px; }
         .partner-box span { font-size: 0.7rem; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
@@ -150,17 +145,7 @@
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
         
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
-        /* --- OSHI เรืองแสงสีฟ้า --- */
-        .footer-text a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: 0.3s;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
-        }
-        .footer-text a:hover { 
-            text-shadow: 0 0 15px rgba(0, 229, 255, 1), 0 0 30px rgba(0, 229, 255, 0.7); 
-        }
+        .footer-text a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; text-shadow: 0 0 10px rgba(0, 229, 255, 0.8); }
 
         #yt-player { display: none; }
     </style>
@@ -281,16 +266,20 @@
 
             function update() {
                 if (player && player.getPlayerState() === 1) { 
-                    const beat = Math.random() * 0.5 + 0.5; 
-                    const speed = 4 - (beat * 3.5); 
-                    const scale = 1 + (beat * 0.05); 
+                    // ปรับค่าสุ่มให้น้อยลงเพื่อให้จังหวะดูช้าและนุ่มนวลขึ้น
+                    const beat = Math.random() * 0.3 + 0.2; 
+                    const speed = 6 - (beat * 4); // หมุนช้าลง (ความเร็วพื้นฐาน 6s)
+                    const scale = 1 + (beat * 0.03); // ขยายตัวน้อยลง
 
                     card.style.setProperty('--speed', `${speed}s`);
                     logo.style.transform = `scale(${scale})`;
-                    card.style.boxShadow = `0 0 ${beat * 50}px rgba(0, 229, 255, ${beat * 0.5})`;
+                    
+                    // ปรับแสงเงาสีขาวให้นุ่มนวล
+                    card.style.boxShadow = `0 0 ${beat * 40}px rgba(255, 255, 255, ${beat * 0.3})`;
                 } else {
-                    card.style.setProperty('--speed', `8s`);
+                    card.style.setProperty('--speed', `10s`); // ตอนหยุดเพลงให้หมุนช้ามาก
                     logo.style.transform = `scale(1)`;
+                    card.style.boxShadow = `0 40px 100px rgba(0,0,0,0.8)`;
                 }
                 requestAnimationFrame(update);
             }

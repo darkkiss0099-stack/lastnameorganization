@@ -8,9 +8,16 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- Selection Style --- */
-        ::selection { background-color: #000; color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-        ::-moz-selection { background-color: #000; color: #fff; }
+        /* --- แก้ไข: เปลี่ยนสีเวลาคุมดำ (Selection) เป็นสีเทา --- */
+        ::selection {
+            background-color: #555; /* สีเทา */
+            color: #fff;            /* ตัวอักษรสีขาว */
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+        ::-moz-selection {
+            background-color: #555;
+            color: #fff;
+        }
 
         body {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
@@ -21,15 +28,20 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- Header Typewriter --- */
+        /* --- Header Typewriter (7s cycle) --- */
         .typewriter-container { height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 5px; width: 100%; }
         .header-title {
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
             text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
-            width: 0; animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
+            width: 0; 
+            animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -28px; text-align: center;
         }
-        @keyframes typing-loop { 0%, 5% { width: 0; } 25%, 70% { width: 850px; } 95%, 100% { width: 0; } }
+        @keyframes typing-loop {
+            0%, 5% { width: 0; }
+            25%, 70% { width: 850px; }
+            95%, 100% { width: 0; }
+        }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
@@ -66,30 +78,31 @@
             background: rgba(15, 15, 15, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
             width: 90%; max-width: 1100px; padding: 30px;
-            display: flex; align-items: center; justify-content: space-between; /* ปรับให้กระจายหัวท้าย */
+            display: flex; align-items: center; justify-content: space-between;
             gap: 20px; position: relative; backdrop-filter: blur(5px);
         }
 
-        /* กล่องสไตล์สี่เหลี่ยมคางหมูเอียง (สำหรับทั้ง DEDKORDON และ JQLUES) */
+        /* กล่องสี่เหลี่ยมคางหมูเอียง พร้อมเรืองแสงขาว */
         .trapezoid-box {
             position: relative; background: rgba(255, 255, 255, 0.05);
             padding: 15px 40px; border-left: 3px solid #fff;
             clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
             font-family: 'Orbitron', sans-serif; font-size: 1.2rem;
-            letter-spacing: 5px; color: #fff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            letter-spacing: 5px; color: #fff; 
+            /* เรืองแสงสีขาว */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4); 
             cursor: pointer; transition: 0.3s;
         }
         .trapezoid-box:hover { background: rgba(255, 255, 255, 0.15); text-shadow: 0 0 15px #fff; transform: scale(1.05); }
 
         .partner-center-info { display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
-
         .partner-label-text { 
             font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; 
             color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; margin-bottom: 5px;
         }
         .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); }
 
-        /* --- Music Player --- */
+        /* --- Music Player Section --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
         .music-mini { background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; padding: 8px 25px 8px 8px; display: flex; align-items: center; gap: 15px; cursor: pointer; backdrop-filter: blur(10px); }
         .music-mini img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #333; object-fit: cover; }

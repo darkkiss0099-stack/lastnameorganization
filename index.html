@@ -6,7 +6,6 @@
     <title>DEDKORDON</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS เดิมคงไว้ --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
@@ -27,15 +26,53 @@
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
-        .main-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px; width: 750px; height: 320px; display: flex; align-items: center; justify-content: center; box-shadow: 0 40px 100px rgba(0,0,0,0.8); margin-bottom: 60px; }
-        .main-logo { width: 320px; filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); opacity: 0.95; }
+        
+        /* --- LOGO หมุน --- */
+        .main-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 25px; 
+            width: 750px; height: 320px; 
+            display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8); 
+            margin-bottom: 60px; 
+        }
+        .main-logo { 
+            width: 280px; 
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); 
+            opacity: 0.95; 
+            animation: rotateLogo 10s linear infinite; /* สั่งให้หมุน */
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
 
         .partners-label { display: flex; align-items: center; justify-content: center; gap: 15px; font-size: 0.55rem; letter-spacing: 6px; color: #fff; margin-bottom: 25px; text-transform: uppercase; width: 100%; }
         .partner-container { display: flex; gap: 20px; width: 100%; max-width: 600px; padding: 0 20px; align-items: center; justify-content: center; }
-        .partner-box { background: rgba(8, 8, 8, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px 0; border-radius: 10px; text-align: center; transition: all 0.4s ease; cursor: pointer; text-decoration: none; flex: 1; min-width: 250px; }
-        .partner-box:hover { background: rgba(30, 30, 30, 0.9); border: 1px solid rgba(255,255,255,0.3); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
-        .partner-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: #fff; }
-        .partner-box span { font-size: 0.6rem; color: #777; letter-spacing: 4px; display: block; margin-top: 10px; }
+        
+        /* --- ป้ายเรืองแสงเมื่อ Hover --- */
+        .partner-box { 
+            background: rgba(40, 40, 40, 0.6); 
+            border: 2px solid rgba(255, 255, 255, 0.1); 
+            padding: 40px 0; 
+            border-radius: 20px; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            text-decoration: none; 
+            flex: 1; 
+            min-width: 250px; 
+        }
+        .partner-box:hover { 
+            background: rgba(20, 20, 20, 0.8); 
+            border: 2px solid #00e5ff; /* สีฟ้าเรืองแสงตามรูป */
+            transform: translateY(-10px); 
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); 
+        }
+        .partner-box h3 { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: #fff; margin-bottom: 5px; }
+        .partner-box span { font-size: 0.7rem; color: #00e5ff; letter-spacing: 2px; text-transform: capitalize; }
 
         /* --- Music Player Section --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
@@ -56,14 +93,13 @@
         .progress-bar { width: 0%; height: 100%; background: #fff; border-radius: 2px; }
         .time-info { display: flex; justify-content: space-between; font-size: 0.6rem; color: #555; margin-bottom: 15px; }
 
-        /* --- Volume Section (เหมือนในรูป) --- */
-        .volume-section { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .volume-icon { font-size: 1.2rem; color: #fff; width: 20px; opacity: 0.7; }
-        
-        .volume-slider-container { flex: 1; height: 4px; background: #333; border-radius: 2px; position: relative; cursor: pointer; }
-        .volume-progress { height: 100%; background: #fff; border-radius: 2px; width: 50%; }
+        /* --- Volume Slider (ปรับตามรูป 1) --- */
+        .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .volume-icon { font-size: 1rem; color: #aaa; }
+        .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; }
+        .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; transition: width 0.1s; }
 
-        .controls { display: flex; justify-content: space-between; align-items: center; }
+        .controls { display: flex; justify-content: center; align-items: center; }
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
 
@@ -86,11 +122,11 @@
     <div class="partner-container">
         <div class="partner-box" onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">
             <h3>JQLUES</h3>
-            <span>PARTNER</span>
+            <span>Partner</span>
         </div>
         <div class="partner-box" onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">
             <h3>DEDKORDON</h3>
-            <span>LEADER</span>
+            <span>Leader</span>
         </div>
     </div>
 
@@ -131,7 +167,7 @@
             </div>
 
             <div class="controls">
-                <div style="font-size: 1.2rem; cursor: pointer; visibility: hidden;">🔉</div> <div class="play-btn" id="master-play" onclick="togglePlayPause()">||</div>
+                <div class="play-btn" id="master-play" onclick="togglePlayPause()">||</div>
             </div>
         </div>
     </div>
@@ -156,9 +192,7 @@
         }
 
         function onPlayerReady(event) {
-            // ตั้งค่าเสียงเริ่มต้น 50%
             player.setVolume(50);
-            
             document.body.addEventListener('click', () => {
                 event.target.playVideo();
             }, { once: true });
@@ -174,22 +208,16 @@
             }, 1000);
         }
 
-        // ฟังก์ชันควบคุมเสียง
         function setVolume(e) {
             const container = document.getElementById('vol-container');
             const bar = document.getElementById('vol-bar');
             const rect = container.getBoundingClientRect();
-            const x = e.clientX - rect.left; // ตำแหน่งเมาส์ที่คลิกในแถบ
-            const width = rect.width;
-            let percent = Math.round((x / width) * 100);
-            
+            const x = e.clientX - rect.left;
+            let percent = Math.round((x / rect.width) * 100);
             if (percent < 0) percent = 0;
             if (percent > 100) percent = 100;
-            
             bar.style.width = percent + "%";
-            if (player) {
-                player.setVolume(percent);
-            }
+            if (player) player.setVolume(percent);
         }
 
         function formatTime(time) {

@@ -8,10 +8,10 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- แก้ไข: เปลี่ยนสีเวลาคุมดำ (Selection) --- */
+        /* --- เปลี่ยนสีเวลาคุมดำ (Selection) --- */
         ::selection {
-            background-color: #000; /* พื้นหลังสีดำ */
-            color: #fff;            /* ตัวอักษรสีขาว */
+            background-color: #000;
+            color: #fff;
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
         ::-moz-selection {
@@ -46,7 +46,7 @@
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
         
-        /* --- กรอบ LOGO แสงวนสีขาวตามจังหวะเพลงแบบช้าๆ --- */
+        /* --- กรอบ LOGO แสงวนสีขาว (ความเร็วคงที่ ไม่ตามจังหวะ) --- */
         .main-card { 
             position: relative;
             width: 750px; height: 320px; 
@@ -58,15 +58,14 @@
             margin-bottom: 60px;
         }
 
-        /* แสงวนที่กรอบ (เปลี่ยนเป็นสีขาว) */
+        /* แสงวนที่กรอบสีขาว */
         .main-card::before {
             content: "";
             position: absolute;
             width: 250%; height: 500%;
-            /* แก้ไขเป็นสีขาว */
             background: conic-gradient(transparent, #ffffff, transparent 40%);
             left: -75%; top: -200%;
-            animation: rotate-border var(--speed, 6s) linear infinite;
+            animation: rotate-border 6s linear infinite; /* ความเร็วคงที่ 6 วินาที */
         }
 
         .main-card::after {
@@ -89,14 +88,13 @@
             z-index: 2; 
         }
         .main-logo { 
-            width: 280px; 
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.15)); 
+            width: 450px; /* ปรับขนาดให้พอดีกับภาพใหม่ */
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.1)); 
             opacity: 0.95; 
             display: block;
-            transition: transform 0.3s ease-out; /* ปรับการตอบสนองให้นุ่มนวลขึ้น */
         }
 
-        /* --- PARTNERS Label --- */
+        /* --- PARTNERS Section --- */
         .partners-label { 
             display: flex; align-items: center; justify-content: center; gap: 20px; 
             font-size: 0.7rem; letter-spacing: 8px; color: #fff; margin-bottom: 25px; 
@@ -157,9 +155,9 @@
     </div>
     <div class="sub-header">HARD TO FALL</div>
 
-    <div class="main-card" id="logo-card">
+    <div class="main-card">
         <div class="logo-wrapper">
-            <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-26558c2801cbf2f5c.png" alt="Logo" class="main-logo" id="main-logo">
+            <img src="https://img5.pic.in.th/file/secure-sv1/image_e73938.png" alt="Logo" class="main-logo">
         </div>
     </div>
 
@@ -228,8 +226,6 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var player;
-        let isAnalysing = false;
-
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt-player', {
                 height: '0', width: '0',
@@ -243,7 +239,6 @@
             player.setVolume(50);
             document.body.addEventListener('click', () => {
                 event.target.playVideo();
-                initVisualizer(); 
             }, { once: true });
             
             setInterval(() => {
@@ -255,35 +250,6 @@
                     document.getElementById('total-time').innerText = formatTime(dur);
                 }
             }, 1000);
-        }
-
-        function initVisualizer() {
-            if (isAnalysing) return;
-            isAnalysing = true;
-
-            const card = document.getElementById('logo-card');
-            const logo = document.getElementById('main-logo');
-
-            function update() {
-                if (player && player.getPlayerState() === 1) { 
-                    // ปรับค่าสุ่มให้น้อยลงเพื่อให้จังหวะดูช้าและนุ่มนวลขึ้น
-                    const beat = Math.random() * 0.3 + 0.2; 
-                    const speed = 6 - (beat * 4); // หมุนช้าลง (ความเร็วพื้นฐาน 6s)
-                    const scale = 1 + (beat * 0.03); // ขยายตัวน้อยลง
-
-                    card.style.setProperty('--speed', `${speed}s`);
-                    logo.style.transform = `scale(${scale})`;
-                    
-                    // ปรับแสงเงาสีขาวให้นุ่มนวล
-                    card.style.boxShadow = `0 0 ${beat * 40}px rgba(255, 255, 255, ${beat * 0.3})`;
-                } else {
-                    card.style.setProperty('--speed', `10s`); // ตอนหยุดเพลงให้หมุนช้ามาก
-                    logo.style.transform = `scale(1)`;
-                    card.style.boxShadow = `0 40px 100px rgba(0,0,0,0.8)`;
-                }
-                requestAnimationFrame(update);
-            }
-            update();
         }
 
         function setVolume(e) {

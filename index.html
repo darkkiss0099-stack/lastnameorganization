@@ -104,7 +104,9 @@
         
         /* Volume Section */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; }
+        .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; cursor: pointer; transition: 0.2s; }
+        .volume-icon-svg:hover { opacity: 1; transform: scale(1.1); }
+        
         .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; user-select: none; }
         .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; pointer-events: none; }
 
@@ -159,7 +161,7 @@
             <div style="display:flex; justify-content:space-between; font-size:0.6rem; color:#555; margin-bottom:15px;"><span id="curr-time">0:00</span><span id="total-time">0:00</span></div>
             
             <div class="volume-section">
-                <svg class="volume-icon-svg" viewBox="0 0 1024 1024"><path d="M625.2 149.3L418.7 355.8H181.3v312.4h237.4l206.5 206.5V149.3zM765.2 512c0-117.8-67.4-220-165.2-269.4v538.8c97.8-49.4 165.2-151.6 165.2-269.4zM600 81.3V163c151.1 53.6 261.2 196.4 261.2 349s-110.1 295.4-261.2 349v81.7c194.2-56.3 338.8-235.3 338.8-430.7S794.2 137.6 600 81.3z"></path></svg>
+                <svg class="volume-icon-svg" viewBox="0 0 1024 1024" onclick="toggleMute()"><path d="M625.2 149.3L418.7 355.8H181.3v312.4h237.4l206.5 206.5V149.3zM765.2 512c0-117.8-67.4-220-165.2-269.4v538.8c97.8-49.4 165.2-151.6 165.2-269.4zM600 81.3V163c151.1 53.6 261.2 196.4 261.2 349s-110.1 295.4-261.2 349v81.7c194.2-56.3 338.8-235.3 338.8-430.7S794.2 137.6 600 81.3z"></path></svg>
                 <div class="volume-slider-container" id="vol-container">
                     <div class="volume-progress" id="vol-bar"></div>
                 </div>
@@ -196,7 +198,8 @@
             let isDragging = false;
             const updateVolume = (e) => {
                 const rect = container.getBoundingClientRect();
-                const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+                const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                const x = clientX - rect.left;
                 let percent = Math.round((x / rect.width) * 100);
                 percent = Math.max(0, Math.min(100, percent));
                 bar.style.width = percent + "%";
@@ -205,6 +208,13 @@
             container.addEventListener('mousedown', (e) => { isDragging = true; updateVolume(e); });
             window.addEventListener('mousemove', (e) => { if (isDragging) updateVolume(e); });
             window.addEventListener('mouseup', () => { isDragging = false; });
+        }
+
+        let isMuted = false;
+        function toggleMute() {
+            if (!player) return;
+            if (isMuted) { player.unMute(); isMuted = false; }
+            else { player.mute(); isMuted = true; }
         }
 
         function formatTime(time) { let m = Math.floor(time / 60); let s = Math.floor(time % 60); return m + ":" + (s < 10 ? '0' : '') + s; }

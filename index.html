@@ -8,16 +8,9 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- แก้ไข: เปลี่ยนสีเวลาคุมดำ (Selection) เป็นสีเทา --- */
-        ::selection {
-            background-color: #555; 
-            color: #fff;            
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
-        }
-        ::-moz-selection {
-            background-color: #555;
-            color: #fff;
-        }
+        /* --- คุมดำสีเทา --- */
+        ::selection { background-color: #555; color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        ::-moz-selection { background-color: #555; color: #fff; }
 
         body {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
@@ -91,7 +84,7 @@
         .partner-label-text { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px #fff; text-transform: uppercase; margin-bottom: 5px; }
         .click-info { font-size: 0.6rem; color: rgba(255, 255, 255, 0.3); }
 
-        /* --- Music Player Section (Square Style) --- */
+        /* --- Music Player Section (Square) --- */
         #music-container { position: fixed; bottom: 30px; left: 30px; z-index: 999; }
         
         .music-mini { 
@@ -111,15 +104,8 @@
         
         /* Volume Section */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        
-        /* AiTwotoneSound Style Icon */
         .volume-icon-svg { width: 22px; height: 22px; fill: #fff; opacity: 0.8; }
-        
-        .volume-slider-container { 
-            flex: 1; height: 6px; background: rgba(255,255,255,0.1); 
-            border-radius: 10px; position: relative; cursor: pointer; 
-            user-select: none;
-        }
+        .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; user-select: none; }
         .volume-progress { height: 100%; background: #fff; border-radius: 10px; width: 50%; pointer-events: none; }
 
         .play-btn { background: #fff; color: #000; width: 45px; height: 45px; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; }
@@ -204,21 +190,18 @@
             setupVolumeSlider();
         }
 
-        // ระบบ Volume Slider แบบลากและคลิก
         function setupVolumeSlider() {
             const container = document.getElementById('vol-container');
             const bar = document.getElementById('vol-bar');
             let isDragging = false;
-
             const updateVolume = (e) => {
                 const rect = container.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
                 let percent = Math.round((x / rect.width) * 100);
                 percent = Math.max(0, Math.min(100, percent));
                 bar.style.width = percent + "%";
                 if (player) player.setVolume(percent);
             };
-
             container.addEventListener('mousedown', (e) => { isDragging = true; updateVolume(e); });
             window.addEventListener('mousemove', (e) => { if (isDragging) updateVolume(e); });
             window.addEventListener('mouseup', () => { isDragging = false; });

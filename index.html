@@ -16,7 +16,7 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- Header Typewriter (Looping with 3s Pause) --- */
+        /* --- Header Typewriter (7s cycle: 2s type, 3s pause, 2s delete) --- */
         .typewriter-container { height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 5px; width: 100%; }
         .header-title {
             font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
@@ -25,13 +25,11 @@
             animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
             margin-right: -28px; text-align: center;
         }
-        
         @keyframes typing-loop {
-            0%, 5% { width: 0; }
-            25%, 70% { width: 850px; }
-            95%, 100% { width: 0; }
+            0%, 5% { width: 0; }           /* เริ่มพิมพ์ */
+            25%, 70% { width: 850px; }     /* พิมพ์จบที่ 25% ค้างไว้จนถึง 70% (ประมาณ 3 วิ) */
+            95%, 100% { width: 0; }        /* ลบออก */
         }
-        
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
 
         .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
@@ -58,7 +56,16 @@
         }
         @keyframes shine { 0% { left: -100%; } 20% { left: 150%; } 100% { left: 150%; } }
 
-        /* --- ป้ายเรืองแสงสีฟ้า --- */
+        /* --- PARTNERS Label (สไตล์ตามรูป) --- */
+        .partners-label { 
+            display: flex; align-items: center; justify-content: center; gap: 20px; 
+            font-size: 0.7rem; letter-spacing: 8px; color: #fff; margin-bottom: 25px; 
+            text-transform: uppercase; width: 100%; font-family: 'Orbitron', sans-serif;
+        }
+        .partners-label::before, .partners-label::after {
+            content: ""; height: 1px; width: 100px; background: rgba(255, 255, 255, 0.2);
+        }
+
         .partner-container { display: flex; gap: 20px; width: 100%; max-width: 600px; padding: 0 20px; align-items: center; justify-content: center; }
         .partner-box { 
             background: rgba(40, 40, 40, 0.6); 
@@ -95,7 +102,6 @@
         .progress-bar { width: 0%; height: 100%; background: #fff; border-radius: 2px; }
         .time-info { display: flex; justify-content: space-between; font-size: 0.6rem; color: #555; margin-bottom: 15px; }
 
-        /* --- Volume Section --- */
         .volume-section { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
         .volume-img { width: 22px; height: auto; opacity: 0.8; filter: invert(1); }
         .volume-slider-container { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; position: relative; cursor: pointer; }
@@ -106,17 +112,16 @@
         
         .footer-text { position: absolute; bottom: 25px; font-size: 0.55rem; letter-spacing: 6px; color: rgba(255,255,255,0.2); text-transform: uppercase; text-align: center; width: 100%; }
         
-        /* --- แก้ไข: ลิงก์ OSHI เรืองแสง --- */
+        /* --- OSHI เรืองแสงสีฟ้า --- */
         .footer-text a { 
-            color: #00e5ff; /* สีฟ้าเริ่มต้น */
+            color: #fff; 
             text-decoration: none; 
-            transition: 0.3s; 
-            text-shadow: 0 0 8px rgba(0, 229, 255, 0.8); /* เอฟเฟกต์เรืองแสง */
-            font-weight: bold;
+            font-weight: bold; 
+            transition: 0.3s;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
         }
         .footer-text a:hover { 
-            color: #fff; 
-            text-shadow: 0 0 15px rgba(0, 229, 255, 1), 0 0 20px rgba(0, 229, 255, 0.6); 
+            text-shadow: 0 0 15px rgba(0, 229, 255, 1), 0 0 30px rgba(0, 229, 255, 0.7); 
         }
 
         #yt-player { display: none; }
@@ -153,7 +158,7 @@
             <img src="https://i.ytimg.com/vi/P8Am-QTUQes/maxresdefault.jpg" alt="Song Art">
             <div class="info-mini">
                 <span>MUSIC</span>
-                <span>IS THERE SOMEONE ELSE...</span>
+                <span>NEVER LOSE ME</span>
             </div>
         </div>
 

@@ -9,11 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* --- แก้ไข: คุมดำสีเทา --- */
-        ::selection { 
-            background-color: #555; 
-            color: #fff; 
-            text-shadow: 0 0 5px rgba(255,255,255,0.5); 
-        }
+        ::selection { background-color: #555; color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
         ::-moz-selection { background-color: #555; color: #fff; }
 
         body {
@@ -25,39 +21,50 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* --- Header Typewriter --- */
-        .typewriter-container { height: 100px; display: flex; justify-content: center; align-items: center; margin-bottom: 5px; width: 100%; }
+        /* --- Header Section (อ้างอิงขนาดและแสงจากรูปภาพ) --- */
+        .typewriter-container { height: 120px; display: flex; justify-content: center; align-items: center; margin-bottom: 10px; width: 100%; }
         .header-title {
-            font-family: 'Orbitron', sans-serif; font-size: 4.8rem; letter-spacing: 28px; font-weight: 900;
-            text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 6px solid #fff;
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 5.5rem; /* ปรับขนาดให้ใหญ่เท่าในรูป */
+            letter-spacing: 32px; 
+            font-weight: 900;
+            text-transform: uppercase; white-space: nowrap; overflow: hidden; border-right: 8px solid #fff;
             width: 0; animation: typing-loop 7s steps(9) infinite, blink 0.6s step-end infinite; 
-            margin-right: -28px; text-align: center;
+            margin-right: -32px; text-align: center;
+            /* เพิ่มแสงเรืองรองสีขาว */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4);
         }
-        @keyframes typing-loop { 0%, 5% { width: 0; } 25%, 70% { width: 850px; } 95%, 100% { width: 0; } }
+        @keyframes typing-loop { 0%, 5% { width: 0; } 25%, 70% { width: 950px; } 95%, 100% { width: 0; } }
         @keyframes blink { from, to { border-color: transparent; } 50% { border-color: #fff; } }
 
-        .sub-header { font-size: 0.65rem; letter-spacing: 14px; color: #ccc; margin-bottom: 40px; text-transform: uppercase; text-align: center; }
+        .sub-header { 
+            font-size: 1.2rem; /* ปรับขนาด HARD TO FALL */
+            letter-spacing: 18px; 
+            color: #fff; 
+            margin-bottom: 50px; 
+            text-transform: uppercase; 
+            text-align: center;
+            /* เพิ่มแสงเรืองรองสีขาว */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
         
-        /* --- โลโก้ใหม่ หมุนรอบตัวเอง (3D Rotation) --- */
+        /* --- โลโก้ใหม่ หมุนรอบตัวเองแนวระนาบเริ่มจากซ้าย --- */
         .spinning-logo-container {
             margin-bottom: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px; /* เพิ่มมิติความลึก */
+            perspective: 1000px;
         }
         .main-logo-spin {
-            width: 300px;
-            filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
-            animation: flip-self 6s ease-in-out infinite; /* หมุนรอบตัวเองแบบนุ่มนวล */
+            width: 320px;
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.4));
+            animation: rotate-self-y 8s linear infinite;
             transform-style: preserve-3d;
         }
-
-        /* อนิเมชั่นหมุนรอบตัวเองเริ่มจากทางซ้าย */
-        @keyframes flip-self {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(-180deg); } /* บิดไปทางซ้าย */
-            100% { transform: rotateY(-360deg); } /* ครบวงรอบตัวเอง */
+        @keyframes rotate-self-y {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(-360deg); } /* หมุนไปทางซ้าย */
         }
 
         /* --- PARTNERS Section --- */

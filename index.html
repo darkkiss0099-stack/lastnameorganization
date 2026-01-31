@@ -30,28 +30,7 @@
             font-family: 'Roboto Mono', monospace;
         }
 
-        .bg-animate {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-        }
-
-        .bg-animate::after {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.1;
-            animation: moveBg 30s linear infinite;
-        }
-
-        @keyframes moveBg {
-            from { transform: translate(0, 0); }
-            to { transform: translate(5%, 5%); }
-        }
-
+        /* --- Header & Title Section --- */
         .typewriter-container {
             height: 100px;
             display: flex;
@@ -117,6 +96,7 @@
             opacity: 0.95;
         }
 
+        /* --- Partners Section (Cleaned up) --- */
         .partners-label {
             display: flex;
             align-items: center;
@@ -130,18 +110,11 @@
             width: 100%;
         }
 
-        .partners-label::before, .partners-label::after {
-            content: "";
-            width: 40px;
-            height: 1px;
-            background: rgba(255,255,255,0.3);
-        }
-
         .partner-container {
             display: flex;
-            gap: 12px;
+            gap: 20px;
             width: 100%;
-            max-width: 1280px;
+            max-width: 800px;
             padding: 0 60px;
             align-items: center;
             justify-content: center;
@@ -150,77 +123,171 @@
         .partner-box {
             background: rgba(8, 8, 8, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 33px 9px;
+            padding: 33px 40px;
             border-radius: 10px;
-            flex: 0.95;
             text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
             text-decoration: none;
-            display: block;
+            flex: 1;
         }
 
-        .partner-box:hover {
+        .partner-box:hover, .partner-box.active {
             background: rgba(30, 30, 30, 0.9);
-            border: 1px solid rgba(255,255,255,0.25);
-            transform: translateY(-10px) scale(1.05);
+            border: 1px solid rgba(255,255,255,0.3);
+            transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-
-        .partner-box.active {
-            background: rgba(15, 15, 15, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            flex: 1.71;
-            padding: 52px 19px;
-            box-shadow: 0 0 40px rgba(0,0,0,1);
-            border-radius: 15px;
         }
 
         .partner-box h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.05rem; 
+            font-size: 1.5rem; 
             letter-spacing: 3px;
-            font-weight: 400; 
-            color: #555;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .partner-box:hover h3 {
             color: #fff;
-        }
-
-        .partner-box.active h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.95rem; 
-            color: #fff;
-            letter-spacing: 6px;
-            font-weight: 700; 
-            transform: scaleY(1) scaleX(1.05);
-            text-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         .partner-box span {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.5rem;
-            color: #333;
-            letter-spacing: 2px;
-            font-weight: 400; 
-            text-transform: uppercase;
+            font-size: 0.6rem;
+            color: #777;
+            letter-spacing: 4px;
             display: block;
-            margin-top: 8px;
-            transition: 0.3s;
+            margin-top: 10px;
         }
 
-        .partner-box:hover span {
+        /* --- Music Player Section (Bottom Left) --- */
+        #music-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+
+        /* Mini Player (Image 1 style) */
+        .music-mini {
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 8px 25px 8px 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-mini img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            object-fit: cover;
+        }
+
+        .music-mini .info-mini {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .music-mini .info-mini span:first-child {
+            font-size: 0.6rem;
+            color: #777;
+            letter-spacing: 2px;
+        }
+
+        .music-mini .info-mini span:last-child {
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        /* Full Player (Image 2 style) */
+        .music-full {
+            display: none;
+            background: #0f0f0f;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            width: 320px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .full-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+
+        .full-body {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .full-body img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+        }
+
+        .full-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .full-info p {
+            font-size: 0.7rem;
             color: #666;
         }
 
-        .partner-box.active span {
-            color: #777;
-            font-size: 0.73rem;
-            letter-spacing: 6px;
-            margin-top: 10px;
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 30%;
+            height: 100%;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.6rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .play-btn {
+            background: #fff;
+            color: #000;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         .footer-text {
@@ -233,11 +300,14 @@
             text-align: center;
             width: 100%;
         }
+
+        /* YouTube Hidden */
+        #yt-player {
+            display: none;
+        }
     </style>
 </head>
 <body>
-
-    <div class="bg-animate"></div>
 
     <div class="typewriter-container">
         <h1 class="header-title">DEDKORDONBOYZ</h1>
@@ -251,41 +321,127 @@
     <div class="partners-label">PARTNERS</div>
 
     <div class="partner-container">
-        <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342/">
-            <h3>?</h3>
-            <span>INBOX TO PARTNER</span>
-        </div>
-        <div class="partner-box" data-url="http://jqluse.dedkordongg.xyz/">
+        <div class="partner-box" onclick="window.open('http://jqluse.dedkordongg.xyz/', '_blank')">
             <h3>JQLUES</h3>
             <span>PARTNER</span>
         </div>
-        <div class="partner-box active" data-url="http://member.dedkordongg.xyz/">
+        <div class="partner-box active" onclick="window.open('http://member.dedkordongg.xyz/', '_blank')">
             <h3>DEDKORDON</h3>
             <span>LEADER</span>
         </div>
-        <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342/">
-            <h3>?</h3>
-            <span>INBOX TO PARTNER</span>
+    </div>
+
+    <div id="music-container">
+        <div class="music-mini" id="player-mini" onclick="togglePlayer()">
+            <img src="https://i.ytimg.com/vi/P8Am-QTUQes/maxresdefault.jpg" alt="Song Art">
+            <div class="info-mini">
+                <span>MUSIC</span>
+                <span>IS THERE SOMEONE ELSE...</span>
+            </div>
         </div>
-        <div class="partner-box" data-url="https://www.facebook.com/tsumaki.tsunaji.342/">
-            <h3>?</h3>
-            <span>INBOX TO PARTNER</span>
+
+        <div class="music-full" id="player-full">
+            <div class="full-header" onclick="togglePlayer()" style="cursor: pointer;">
+                <span>● NOW PLAYING</span>
+                <span>▼</span>
+            </div>
+            <div class="full-body">
+                <img src="https://i.ytimg.com/vi/P8Am-QTUQes/maxresdefault.jpg" alt="Song Art">
+                <div class="full-info">
+                    <h4>IS THERE SOMEONE ELSE?</h4>
+                    <p>THE WEEKND</p>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="time-info">
+                <span id="curr-time">0:16</span>
+                <span>3:19</span>
+            </div>
+            <div class="controls">
+                <div style="font-size: 1.2rem; cursor: pointer;">🔉</div>
+                <div class="play-btn" id="master-play" onclick="togglePlayPause()">||</div>
+            </div>
         </div>
     </div>
+
+    <div id="yt-player"></div>
 
     <div class="footer-text">SYSTEM DESIGN BY OSHI</div>
 
     <script>
-        const boxes = document.querySelectorAll('.partner-box');
-        boxes.forEach(box => {
-            box.addEventListener('click', () => {
-                const url = box.getAttribute('data-url');
-                if (url && url !== "#") {
-                    window.open(url, '_blank');
+        // YouTube API Loading
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                videoId: 'P8Am-QTUQes',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'P8Am-QTUQes'
+                },
+                events: {
+                    'onReady': onPlayerReady
                 }
             });
-        });
-    </script>
+        }
 
+        function onPlayerReady(event) {
+            // Browser policy requires interaction for sound
+            document.body.addEventListener('click', () => {
+                event.target.playVideo();
+            }, { once: true });
+            
+            // Update progress bar
+            setInterval(() => {
+                if(player && player.getCurrentTime) {
+                    let curr = player.getCurrentTime();
+                    let dur = player.getDuration();
+                    let perc = (curr / dur) * 100;
+                    document.querySelector('.progress-bar').style.width = perc + "%";
+                    
+                    let mins = Math.floor(curr / 60);
+                    let secs = Math.floor(curr % 60);
+                    document.getElementById('curr-time').innerText = mins + ":" + (secs < 10 ? '0' : '') + secs;
+                }
+            }, 1000);
+        }
+
+        // Toggle Mini/Full Player
+        function togglePlayer() {
+            const mini = document.getElementById('player-mini');
+            const full = document.getElementById('player-full');
+            if (full.style.display === 'none' || full.style.display === '') {
+                full.style.display = 'block';
+                mini.style.display = 'none';
+            } else {
+                full.style.display = 'none';
+                mini.style.display = 'flex';
+            }
+        }
+
+        // Play/Pause Logic
+        let isPlaying = true;
+        function togglePlayPause() {
+            const btn = document.getElementById('master-play');
+            if (isPlaying) {
+                player.pauseVideo();
+                btn.innerText = "▶";
+            } else {
+                player.playVideo();
+                btn.innerText = "||";
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
 </body>
 </html>
